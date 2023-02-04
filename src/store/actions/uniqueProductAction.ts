@@ -6,7 +6,7 @@ export const uniqueProductAction = (id: number) => {
         try {
             dispatch(fetching());
             const response = await axios.get(`http://localhost:3030/api/v1/users/${id}`);
-            
+
             dispatch(fetchSucces(response.data))
         }
         catch (error) {

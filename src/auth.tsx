@@ -10,11 +10,11 @@ interface authInterface {
     accessToken: string,
     refreshToken: string
 }
-const auth = ():authInterface => {
+const auth = (): authInterface => {
     const authString = localStorage.getItem('auth');
-    if(authString) {
+    if (authString) {
         const auth = JSON.parse(authString)
-        if(Date.now() < auth.lifetime) {
+        if (Date.now() < auth.lifetime) {
             return auth;
         } else {
             localStorage.removeItem('auth');
@@ -33,5 +33,5 @@ const auth = ():authInterface => {
         refreshToken: ""
     };
 }
-  
+
 export default auth

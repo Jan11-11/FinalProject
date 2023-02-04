@@ -11,9 +11,9 @@ export const fetchGovernmentMemberFullInfo = () => {
         try {
             dispatch(successLoading());
             const response = await axios.get(`${URL}/api/v1/users/fullList`);
-           if (response.status===200 && response.statusText==="OK") {
-            dispatch(successFullfit(response.data));
-           }
+            if (response.status === 200 && response.statusText === "OK") {
+                dispatch(successFullfit(response.data));
+            }
         } catch (error) {
             dispatch(successError(error as Error))
         }
@@ -25,12 +25,12 @@ export const fetchGovernmentMembersInfo = () => {
         try {
             dispatch(successLoading());
             const response = await axios.get(`${URL}/api/v1/users`);
-            
-           if (response.status===200 && response.statusText==="OK") {
-            dispatch(successFullfit(response.data));
-           }
+
+            if (response.status === 200 && response.statusText === "OK") {
+                dispatch(successFullfit(response.data));
+            }
         } catch (error) {
-            
+
             dispatch(successError(error as Error))
         }
     }

@@ -16,10 +16,10 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path='/detail' element={<DatailPage />} />
                 <Route path="/createProduct" element={<CreateDataProduct />} />
-                <Route path="/initialPage" element={<SocketPage/>}/>
+                <Route path="/initialPage" element={<SocketPage />} />
             </Routes>
         </div>
-        
+
     );
 }
 

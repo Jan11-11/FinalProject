@@ -1,12 +1,5 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IMemberFullInfo } from "../../types/models";
-
-
-interface IUniqProduct {
-    loading: boolean,
-    error: string,
-    product: []
-}
 
 const initialState = {
     loading: false,

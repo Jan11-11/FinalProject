@@ -60,10 +60,10 @@ export function CreateDataProduct() {
             setErrorProduct({ ...errorProduct, img: "Ներբեռնեք նկարը" });
         }
         if (!(Object.keys(errorProduct).length) && check === 3) {
-             dispatch(addProduct(createProduct));
-             navigate("/homeFullInfo", { state:createProduct,}) ;
-             navigate(0)
-          }
+            dispatch(addProduct(createProduct));
+            navigate("/homeFullInfo", { state: createProduct, });
+            navigate(0)
+        }
     }
 
     const blurFullName = (event: any) => {
@@ -92,7 +92,7 @@ export function CreateDataProduct() {
             setErrorProduct({ ...errorProduct })
         }
     }
-    
+
 
     return (
 
@@ -102,7 +102,7 @@ export function CreateDataProduct() {
                 <div className="pageTitle" id="createTitle"> Ավելացնել նոր նկար</div>
                 <div className="createpage" id="createpage">
                     <div className={errorProduct.img ? "createimg imageError" : "createimg"} id="createImage">
-                        <img id={uploadedImage.path ? "createdImg" : ""} src={uploadedImage.path? `http://localhost:3030/${uploadedImage.path}`:" ../../../../government/backgroundimage.png"} />
+                        <img id={uploadedImage.path ? "createdImg" : ""} src={uploadedImage.path ? `http://localhost:3030/${uploadedImage.path}` : " ../../../../government/backgroundimage.png"} />
                     </div>
                     <form className="create" id="create" autoComplete="off">
                         <div className="createInput" id="createInput">

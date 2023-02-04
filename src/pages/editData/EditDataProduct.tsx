@@ -9,7 +9,7 @@ import { useAppSelector, useAppDispatch } from "../../hooks";
 type MyEdite = Record<string | number, string | string>
 
 export function EditDataProduct() {
-  const { product  } = useAppSelector((state) => state.uniqueProduct);
+  const { product } = useAppSelector((state) => state.uniqueProduct);
   const uploadedImage = useAppSelector((state) => state.membersFullInfo.uploadedImage);
   const [editeProduct, setEditeProduct] = useState<MyEdite>({
     fullname: "",
@@ -43,19 +43,19 @@ export function EditDataProduct() {
     if (storeId) {
       dispatch(uniqueProductAction(parseInt(storeId)));
     }
-    
-  }, [storeId,dispatch]);
- 
+
+  }, [storeId, dispatch]);
+
   useEffect(() => {
     if (product.length > 0) {
       setEditeProduct({ ...editeProduct, fullname: product[0].fullname, position: product[0].position, picture: product[0].picture })
       if (uploadedImage.path != null && uploadedImage.path != "") {
         editeProduct.picture = uploadedImage.path;
-        setEditeProduct({...editeProduct});
+        setEditeProduct({ ...editeProduct });
       }
     }
-  }, [product, uploadedImage,editeProduct.picture]);
-  
+  }, [product, uploadedImage, editeProduct.picture]);
+
 
   if (storeId) {
     editeProduct.id = storeId;
@@ -126,7 +126,7 @@ export function EditDataProduct() {
 
     if (!(Object.keys(editeErrorProduct).length) && check === 4) {
       dispatch(editeAProduct(editeProduct));
-      navigate("/homeFullInfo", { state: { id:editeProduct.id } });
+      navigate("/homeFullInfo", { state: { id: editeProduct.id } });
     }
   }
 

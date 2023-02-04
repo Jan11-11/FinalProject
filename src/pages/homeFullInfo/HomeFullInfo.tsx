@@ -1,27 +1,27 @@
 import { fetchGovernmentMemberFullInfo } from "../../store/actions/governmentMembersFullInfoAction";
 import { useAppSelector, useAppDispatch } from "../../hooks";
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { IMemberFullInfo } from "../../types/models";
 import { HomeFullInfoProduct } from "../../components/homeFullInfoProduct/HomeFullInfoProduct";
 import { FullInfoActionConfirm } from "../../components/fullInfoActionConfirm"
 import { Header } from "../../components/header";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./homeFullInfo.scss";
 import { Loading } from "../../components/loading";
 
 export const HomeFullInfo = () => {
     const [keyId, setKeyId] = useState<number | undefined | null>();
     const [remove, setRemove] = useState(false);
-    const [done,setDone]=useState(false)
+    const [done, setDone] = useState(false)
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { loading, error, membersFullInfo } = useAppSelector((state) => state.membersFullInfo);
     useEffect(() => {
         dispatch(fetchGovernmentMemberFullInfo());
-    }, [dispatch, keyId,done]);
-   
-   
-    
+    }, [dispatch, keyId, done]);
+
+
+
     return (
         <div className={"all"}>
             <div className={remove ? "overlay" : "overlayPassive"}></div>
@@ -40,8 +40,8 @@ export const HomeFullInfo = () => {
                     </div>
                     <div className={"memberFullInfo"}>
                         {membersFullInfo.length > 0 ? membersFullInfo.map((member: IMemberFullInfo) => {
-                        
-                            
+
+
                             return (
                                 <HomeFullInfoProduct key={member.id} done={done} setDone={setDone} member={member} keyId={keyId} setKeyId={setKeyId} remove={remove} setRemove={setRemove} />
                             )

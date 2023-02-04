@@ -44,8 +44,8 @@ export const governmentMembersFullInfo = createSlice({
         },
         editeMember: (state, action) => {
             state.membersFullInfo = state.membersFullInfo.map((member) => {
-                if (member.id== action.payload[0].id) {
-                    member=action.payload[0];
+                if (member.id == action.payload[0].id) {
+                    member = action.payload[0];
                 }
                 return member;
             })
@@ -66,5 +66,5 @@ export const governmentMembersFullInfo = createSlice({
     }
 
 });
-export const { successError, successFullfit, addMember, deleteMember, successLoading, editeMember,activeMember, setImage } = governmentMembersFullInfo.actions;
+export const { successError, successFullfit, addMember, deleteMember, successLoading, editeMember, activeMember, setImage } = governmentMembersFullInfo.actions;
 export default governmentMembersFullInfo.reducer;
