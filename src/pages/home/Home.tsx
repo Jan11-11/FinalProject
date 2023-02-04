@@ -18,7 +18,7 @@ export const Home = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const ws = io("http://localhost:3030", {
+        const ws = io("http://34.125.131.155:3000", {
             extraHeaders: {
                 auth_token: auth().accessToken,
             }
