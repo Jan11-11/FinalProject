@@ -20,7 +20,7 @@ export const FullInfoLeftPart = ({ member, status, setStatus, deactivate }: IAct
                     }
                 }
                 } src={"/government/Group.png"} />
-                <img className={member.status === "passive" ? "img imgPassive" : "img"} src={`http://localhost:3030/upload/${member.picture}`} width={"234px"} height={"140px"} /></div>
+                <img className={member.status === "passive" ? "img imgPassive" : "img"} src={`http://34.125.131.155:3000/upload/${member.picture}`} width={"234px"} height={"140px"} /></div>
             <div className={"memberLeftPartDescription"}>
                 <div className={"memberLeftPartDescriptionChild"}> <p id={member.status === "passive" ? "memberAllParagraph" : ""} className={"memberLeftPartDescriptionChildParagraph"}>Պաշտոն:<span id={"memberLeftPartDescriptionChildSpan"}>{member.position}</span></p></div>
                 <div className={"memberLeftPartDescriptionChild"}><p id={member.status === "passive" ? "memberAllParagraph" : ""} className={"memberLeftPartDescriptionChildParagraph"}>Անուն Ազգանուն:<span id={"memberLeftPartDescriptionChildSpan"}>{member.fullname}</span></p></div>

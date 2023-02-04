@@ -137,7 +137,7 @@ export function EditDataProduct() {
         <div className="pageTitle" id="createTitle"> Տվյալների խմբագրում</div>
         <div className="createpage" id="createpage">
           <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"} id="createimg">
-            <img id={editeProduct.picture ? "createdImg" : ""} src={uploadedImage.path ? uploadedImage.path : editeProduct.picture ? `http://localhost:3030/upload/${editeProduct.picture}` : "/government/backgroundimage.png"} />
+            <img id={editeProduct.picture ? "createdImg" : ""} src={uploadedImage.path ? uploadedImage.path : editeProduct.picture ? `http://34.125.131.155:3000/upload/${editeProduct.picture}` : "/government/backgroundimage.png"} />
           </div>
           <form className="create" id="create" autoComplete="off">
             <div className="createInput" id="createInput">

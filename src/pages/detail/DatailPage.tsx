@@ -36,7 +36,7 @@ export function DatailPage() {
                 <div className='chunk' id='chunk'>
                     <div className='chunkleftdiv' id='chunkleftdiv'>
                         <div className='chunkleft' id='chunkleft'>
-                            <img src={`http://localhost:3030/upload/${minister.picture}`} />
+                            <img src={`http://34.125.131.155:3000/upload/${minister.picture}`} />
                         </div>
                     </div>
                     <div className='chunkright' id='chunkright'>
