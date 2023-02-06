@@ -15,7 +15,7 @@ const initialState = {
     uploadedImage: {
         "originalname": "",
         "filename": "",
-        "path": "",
+        "dirname": "",
         "success": false
     }
 }
