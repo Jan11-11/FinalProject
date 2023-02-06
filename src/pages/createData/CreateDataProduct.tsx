@@ -102,7 +102,7 @@ export function CreateDataProduct() {
                 <div className="pageTitle" id="createTitle"> Ավելացնել նոր նկար</div>
                 <div className="createpage" id="createpage">
                     <div className={errorProduct.img ? "createimg imageError" : "createimg"} id="createImage">
-                        <img id={uploadedImage.path ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname : " ../../../../government/backgroundimage.png"} />
+                        <img id={uploadedImage.dirname ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname : " ../../../../government/backgroundimage.png"} />
                     </div>
                     <form className="create" id="create" autoComplete="off">
                         <div className="createInput" id="createInput">
