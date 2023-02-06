@@ -49,7 +49,7 @@ export function EditDataProduct() {
   useEffect(() => {
     if (product.length > 0) {
       setEditeProduct({ ...editeProduct, fullname: product[0].fullname, position: product[0].position, picture: product[0].picture })
-      if (uploadedImage.path != null && uploadedImage.path != "") {
+      if (uploadedImage.dirname != null && uploadedImage.dirname != "") {
         editeProduct.picture = uploadedImage.dirname;
         setEditeProduct({ ...editeProduct });
       }
