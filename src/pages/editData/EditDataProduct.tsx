@@ -21,7 +21,7 @@ export function EditDataProduct() {
   const id = useLocation();
 
   const dispatch = useAppDispatch();
-  let fileReader: any = new FileReader();
+  
 
   const regCheck: { [key: string]: RegExp } = {
     fullname: new RegExp(/^[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}([-]{0,1}[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}){0,1}[\s][\u0531-\u0561]{1}[\u0561-\u0586]{2,19}([-]{0,1}[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}){0,1}$/),
@@ -50,7 +50,7 @@ export function EditDataProduct() {
     if (product.length > 0) {
       setEditeProduct({ ...editeProduct, fullname: product[0].fullname, position: product[0].position, picture: product[0].picture })
       if (uploadedImage.path != null && uploadedImage.path != "") {
-        editeProduct.picture = uploadedImage.path;
+        editeProduct.picture = uploadedImage.dirname;
         setEditeProduct({ ...editeProduct });
       }
     }
@@ -137,7 +137,7 @@ export function EditDataProduct() {
         <div className="pageTitle" id="createTitle"> Տվյալների խմբագրում</div>
         <div className="createpage" id="createpage">
           <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"} id="createimg">
-            <img id={editeProduct.picture ? "createdImg" : ""} src={uploadedImage.path ? uploadedImage.path : editeProduct.picture ? `http://34.125.131.155:3000/upload/${editeProduct.picture}` : "/government/backgroundimage.png"} />
+            <img id={editeProduct.picture ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname: editeProduct.picture ? editeProduct.picture: "/government/backgroundimage.png"}/>
           </div>
           <form className="create" id="create" autoComplete="off">
             <div className="createInput" id="createInput">
@@ -162,21 +162,7 @@ export function EditDataProduct() {
             </div>
             <div className="buttons" id="buttons" >
               <div className="rightbtns" id="buttons" >
-                <button className="removeBtn" id="removeBtn" onClick={(event) => {
-                  event.preventDefault();
-                  if (Object.values(editeProduct).length) {
-                    for (let key in editeProduct) {
-                      delete editeProduct[key];
-                    }
-                    setEditeProduct({ ...editeProduct });
-                  }
-                  if (Object.values(editeErrorProduct).length) {
-                    for (let key in editeErrorProduct) {
-                      delete editeErrorProduct[key];
-                    }
-                    setEditeErrorProduct({ ...editeErrorProduct });
-                  }
-                }}>Չեղարկել</button>
+                <button className="removeBtn" id="removeBtn">Չեղարկել</button>
                 <button className="addBtn" id="addBtn" onClick={addConfirme}> Հաստատել </button>
               </div>
             </div>
@@ -186,11 +172,10 @@ export function EditDataProduct() {
                   <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />
                   Ներբեռնել նկար
                 </label>
-                <input type="file" accept="image/*" name="file" id="file" style={{ "display": "none" }} value={Object.keys(fileReader).length > 0 ? fileReader.files[0] : ""} onChange={(e) => uploadImageHandler(e)} />
+                <input type="file" accept="image/*" name="file" id="file" style={{ "display": "none" }}  onChange={(e) => uploadImageHandler(e)} />
               </div>
               {editeProduct.picture ? <div id="delDiv" onClick={() => {
-                delete editeProduct.picture;
-                fileReader = "";
+                 editeProduct.picture = "";
                 setEditeProduct({ ...editeProduct });
               }}>
                 <img src="../../../../government/trash.svg" />

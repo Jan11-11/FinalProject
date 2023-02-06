@@ -16,9 +16,9 @@ export const Home = () => {
     const [socketColor, setSocketColor] = useState(0);
     const { membersFullInfo, loading, error } = useAppSelector((state) => state.membersFullInfo);
     const dispatch = useAppDispatch();
-
+    const URL = process.env.REACT_APP_BASE_URL1;
     useEffect(() => {
-        const ws = io("http://34.125.131.155:3000", {
+        const ws = io(`${URL}`, {
             extraHeaders: {
                 auth_token: auth().accessToken,
             }

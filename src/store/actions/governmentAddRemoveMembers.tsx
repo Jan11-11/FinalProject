@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { addMember, deleteMember, editeMember, activeMember, setImage } from "../slices/GovernmetMembersFullInfo";
 import { store } from "../index";
 import axios from "axios";
-const PATH_URL = "http://34.125.131.155:3000"
+const PATH_URL = process.env.REACT_APP_BASE_URL1;
 
 interface IDelete {
     id: number | null | undefined

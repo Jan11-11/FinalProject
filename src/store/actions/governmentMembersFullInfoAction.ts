@@ -4,7 +4,7 @@ import axios from "axios";
 interface ICreateMember {
     [key: string]: string
 }
-const URL = "http://34.125.131.155:3000";
+const URL = process.env.REACT_APP_BASE_URL1;
 
 export const fetchGovernmentMemberFullInfo = () => {
     return async (dispatch: Dispatch) => {

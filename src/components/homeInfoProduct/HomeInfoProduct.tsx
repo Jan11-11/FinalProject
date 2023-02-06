@@ -26,7 +26,7 @@ export const HomeInfoProduct = ({ member, socket, socketColor, setSocketColor }:
             socket.emit("click", 3, member.id)
         }
         }>
-            <div id={"memberTitle"} className={"title"}> <div className="image"><img src={`http://34.125.131.155:3000/upload/${member.picture}`} /></div><p id={"memberTitleP"} className={"memberTitleP"}>{member.position}</p></div>
+            <div id={"memberTitle"} className={"title"}> <div className="image"><img src={member.picture} /></div><p id={"memberTitleP"} className={"memberTitleP"}>{member.position}</p></div>
             <div id={"memberName"} className={member.id === socketColor ? "socketColor" : "memberName"}><h5 className={member.id === socketColor ? "socketTextColor" : "memberNameH5"} >{member.fullname}</h5></div>
         </div>
     );
