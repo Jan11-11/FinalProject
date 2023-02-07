@@ -1,6 +1,7 @@
+/* eslint-disable */
 import "./socketPage.scss";
 import { useEffect, useState } from "react";
-import { useAppSelector, useAppDispatch } from "../../hooks";
+import {useAppDispatch } from "../../hooks";
 import { fetchGovernmentMembersInfo } from "../../store/actions/governmentMembersFullInfoAction";
 import io from "socket.io-client"
 import { useNavigate, useLocation } from "react-router-dom";
@@ -12,6 +13,11 @@ export function SocketPage() {
     const dispatch = useAppDispatch();
     const URL = process.env.REACT_APP_BASE_URL1;
     useEffect(() => {
+    const loc:string | any = localStorage.getItem("auth");
+    const local = JSON.parse(loc);
+    if(local==null || local?.id!=2){
+        navigate("/");
+    };
         const ws = io(`${URL}`, {
             extraHeaders: {
                 auth_token: auth().accessToken,

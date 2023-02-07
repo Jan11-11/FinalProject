@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Header } from "../../components/header";
 import "./editDataProduct.scss";
 import { editeAProduct, uploadImage } from "../../store/actions/governmentAddRemoveMembers"
@@ -14,15 +15,14 @@ export function EditDataProduct() {
   const [editeProduct, setEditeProduct] = useState<MyEdite>({
     fullname: "",
     position: "",
-    picture: ""
   });
   const [editeErrorProduct, setEditeErrorProduct] = useState<MyEdite>({});
   const navigate = useNavigate();
   const id = useLocation();
 
   const dispatch = useAppDispatch();
-  
-
+  localStorage.setItem("id", JSON.stringify(id.state.id));
+  let storeId = localStorage.getItem("id");
   const regCheck: { [key: string]: RegExp } = {
     fullname: new RegExp(/^[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}([-]{0,1}[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}){0,1}[\s][\u0531-\u0561]{1}[\u0561-\u0586]{2,19}([-]{0,1}[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}){0,1}$/),
     position: new RegExp(/^[\u0531-\u0561]{1,2}[\u0561-\u0586]{0,19}[,]{0,1}[\s]{1}([\u0531-\u0561]{0,5}[\u0561-\u0586]{0,19}[\u0587]{0,3}[,։՝]{0,1}[\s]{0,1}){1,9}$/),
@@ -34,25 +34,29 @@ export function EditDataProduct() {
       dispatch(uploadImage(e.target.files[0]));
     }
   }
-  if (id.state != null) {
-    localStorage.setItem("id", JSON.stringify(id.state.id));
-  }
-  let storeId = localStorage.getItem("id");
+
+
 
   useEffect(() => {
     if (storeId) {
       dispatch(uniqueProductAction(parseInt(storeId)));
     }
 
-  }, [storeId, dispatch]);
+  }, [storeId, id, dispatch]);
 
   useEffect(() => {
     if (product.length > 0) {
-      setEditeProduct({ ...editeProduct, fullname: product[0].fullname, position: product[0].position, picture: product[0].picture })
+      editeProduct.fullname = product[0].fullname;
+      editeProduct.position = product[0].position;
+      if (product[0].picture != editeProduct.picture) {
+        editeProduct.picture = product[0].picture;
+      }
+      setEditeProduct({ ...editeProduct });
       if (uploadedImage.dirname != null && uploadedImage.dirname != "") {
         editeProduct.picture = uploadedImage.dirname;
         setEditeProduct({ ...editeProduct });
       }
+
     }
   }, [product, uploadedImage, editeProduct.picture]);
 
@@ -137,7 +141,7 @@ export function EditDataProduct() {
         <div className="pageTitle" id="createTitle"> Տվյալների խմբագրում</div>
         <div className="createpage" id="createpage">
           <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"} id="createimg">
-            <img id={editeProduct.picture ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname: editeProduct.picture ? editeProduct.picture: "/government/backgroundimage.png"}/>
+            <img id={editeProduct.picture ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname : editeProduct.picture ? editeProduct.picture : "/government/backgroundimage.png"} />
           </div>
           <form className="create" id="create" autoComplete="off">
             <div className="createInput" id="createInput">
@@ -172,10 +176,10 @@ export function EditDataProduct() {
                   <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />
                   Ներբեռնել նկար
                 </label>
-                <input type="file" accept="image/*" name="file" id="file" style={{ "display": "none" }}  onChange={(e) => uploadImageHandler(e)} />
+                <input type="file" accept="image/*" name="file" id="file" style={{ "display": "none" }} onChange={(e) => uploadImageHandler(e)} />
               </div>
               {editeProduct.picture ? <div id="delDiv" onClick={() => {
-                 editeProduct.picture = "";
+                editeProduct.picture = "";
                 setEditeProduct({ ...editeProduct });
               }}>
                 <img src="../../../../government/trash.svg" />

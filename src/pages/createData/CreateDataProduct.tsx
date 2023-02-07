@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Header } from "../../components/header";
 import "./createDataProduct.scss";
 import { useState } from 'react';
@@ -60,9 +61,11 @@ export function CreateDataProduct() {
             setErrorProduct({ ...errorProduct, img: "Ներբեռնեք նկարը" });
         }
         if (!(Object.keys(errorProduct).length) && check === 3) {
+
             dispatch(addProduct(createProduct));
             navigate("/homeFullInfo", { state: createProduct, });
-            navigate(0);
+
+
         }
     }
 

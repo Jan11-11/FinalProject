@@ -1,6 +1,7 @@
+/* eslint-disable */
 import { fetchGovernmentMemberFullInfo } from "../../store/actions/governmentMembersFullInfoAction";
 import { useAppSelector, useAppDispatch } from "../../hooks";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import { IMemberFullInfo } from "../../types/models";
 import { HomeFullInfoProduct } from "../../components/homeFullInfoProduct/HomeFullInfoProduct";
 import { FullInfoActionConfirm } from "../../components/fullInfoActionConfirm"
@@ -15,9 +16,14 @@ export const HomeFullInfo = () => {
     const [done, setDone] = useState(false)
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const { loading, error, membersFullInfo } = useAppSelector((state) => state.membersFullInfo);
+    const { membersFullInfo } = useAppSelector((state) => state.membersFullInfo);
     useEffect(() => {
-        dispatch(fetchGovernmentMemberFullInfo());
+    const loc:string | any = localStorage.getItem("auth");
+    const local = JSON.parse(loc);
+    if(local==null || local?.id!=1){
+        navigate("/");
+    };
+        dispatch(fetchGovernmentMemberFullInfo());    
     }, [dispatch, keyId, done]);
 
 

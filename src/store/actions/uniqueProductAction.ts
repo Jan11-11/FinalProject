@@ -7,8 +7,11 @@ export const uniqueProductAction = (id: number) => {
         try {
             dispatch(fetching());
             const response = await axios.get(`${URL}/api/v1/users/${id}`);
+            if (response.status===200 && response.statusText==="OK") {
+                dispatch(fetchSucces(response.data))
+            }
 
-            dispatch(fetchSucces(response.data))
+           
         }
         catch (error) {
             dispatch(fetchError(error as Error))

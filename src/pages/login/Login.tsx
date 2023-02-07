@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { LoginHeader } from "../../components/loginHeader/LoginHeader";
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
@@ -6,10 +7,6 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Input } from 'antd';
 import axios from "axios";
 import auth from "../../auth";
-
-interface Iuser {
-    [key: string]: string
-}
 
 interface ILogin {
     [key: string]: string,

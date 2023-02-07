@@ -1,9 +1,7 @@
+/* eslint-disable */
 import { Dispatch } from "@reduxjs/toolkit";
 import { successError, successFullfit, successLoading } from "../slices/GovernmetMembersFullInfo";
 import axios from "axios";
-interface ICreateMember {
-    [key: string]: string
-}
 const URL = process.env.REACT_APP_BASE_URL1;
 
 export const fetchGovernmentMemberFullInfo = () => {

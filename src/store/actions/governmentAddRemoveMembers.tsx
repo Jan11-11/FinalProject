@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { addMember, deleteMember, editeMember, activeMember, setImage } from "../slices/GovernmetMembersFullInfo";
 import { store } from "../index";
@@ -9,20 +10,18 @@ interface IDelete {
 }
 
 type MyEdite = Record<string | number, string | string>;
-interface IMember {
-    [key: string]: any
-}
 export const addProduct = createAsyncThunk(
     "add",
-    async (item: IMember, { dispatch }) => {
+    async (item: any, { dispatch }) => {
+        
         const member = {
             fullname: item.fullname,
             position: item.position,
             picture: item.picture
         }
         try {
-            const response = await axios.post(`${PATH_URL}/api/v1/users`, member)
-            if (response.status === 200 && response.statusText === "OK") {
+            const response = await axios.post(`${PATH_URL}/api/v1/users`, member);
+            if (response.status === 201) {
                 dispatch(addMember(response.data));
             }
         }

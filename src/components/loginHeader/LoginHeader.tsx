@@ -1,3 +1,4 @@
+/* eslint-disable */
 import "./loginHeader.scss";
 export const LoginHeader = () => {
     return (

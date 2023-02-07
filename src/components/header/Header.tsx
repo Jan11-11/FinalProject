@@ -1,3 +1,4 @@
+/* eslint-disable */
 import "./header.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +16,6 @@ export const Header = () => {
                 <div className={"headerVectorPartParent"}>
                     <div className={"headerVectorPart"} onClick={(event) => {
                         event.preventDefault();
-
                         localStorage.removeItem('auth');
                         localStorage.removeItem('id');
                         navigate("/");

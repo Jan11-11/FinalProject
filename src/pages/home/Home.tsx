@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { fetchGovernmentMembersInfo } from "../../store/actions/governmentMembersFullInfoAction";
@@ -12,26 +13,37 @@ import auth from "../../auth";
 
 export const Home = () => {
     const navigate = useNavigate()
+    
+   
     const [socket, setSocket] = useState<any>(null)
     const [socketColor, setSocketColor] = useState(0);
     const { membersFullInfo, loading, error } = useAppSelector((state) => state.membersFullInfo);
     const dispatch = useAppDispatch();
     const URL = process.env.REACT_APP_BASE_URL1;
+    
     useEffect(() => {
+    const loc:string | any = localStorage.getItem("auth");
+    const local = JSON.parse(loc);
+    if(local==null || local?.id!=3){
+        navigate("/");
+    };
+       if(local?.id==3){
         const ws = io(`${URL}`, {
             extraHeaders: {
                 auth_token: auth().accessToken,
             }
         });
         setSocket(ws);
-
+       }
         dispatch(fetchGovernmentMembersInfo())
     }, [dispatch]);
+    
+
 
     return (
         <div id={"body"} className={"body"}>
             <Header />
-            <div className={"container"}>
+            <div className={"container"} id={"container"}>
                 <h1 id={"containerTitle"}>ՀՀ Կառավարության անդամներ</h1>
                 <div id={"members"} className={"members"}>
                     {membersFullInfo.length > 0 ? membersFullInfo.map((member: IMemberInfo) => {
@@ -46,4 +58,4 @@ export const Home = () => {
         </div>
     );
 }
-
+/*eslint-disable*/

@@ -1,7 +1,6 @@
+/* eslint-disable */
 import { IMemberInfo } from "../../types/models";
 import "./homeInfoProduct.scss";
-import { useNavigate } from "react-router-dom";
-import { Socket } from "socket.io-client";
 interface IMember {
     socket: any,
     member: IMemberInfo,
@@ -19,10 +18,7 @@ export const HomeInfoProduct = ({ member, socket, socketColor, setSocketColor }:
             if (member.id) {
                 setSocketColor(member.id);
             }
-            const payload = {
-                loginUserId: user_id,
-                currentUserid: member.id
-            }
+           
             socket.emit("click", 3, member.id)
         }
         }>

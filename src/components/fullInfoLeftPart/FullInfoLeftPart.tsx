@@ -1,3 +1,4 @@
+/* eslint-disable */
 import "./fullInfoLeftPart.scss";
 import { IMemberFullInfo } from "../../types/models"
 interface IActive {

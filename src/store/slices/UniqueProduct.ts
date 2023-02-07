@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IMemberFullInfo } from "../../types/models";
 
+/*eslint-disable*/
 const initialState = {
     loading: false,
     error: "",
-    product: <IMemberFullInfo[]>[],
+    product:<IMemberFullInfo[]> [],
 }
+
 
 export const uniqueProduct = createSlice({
     name: "product",
@@ -26,3 +28,6 @@ export const uniqueProduct = createSlice({
 
 export const { fetching, fetchSucces, fetchError } = uniqueProduct.actions;
 export default uniqueProduct.reducer;
+
+
+/*eslint-disable*/

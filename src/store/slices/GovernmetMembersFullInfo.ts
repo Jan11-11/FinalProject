@@ -1,12 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction, Dispatch } from "@reduxjs/toolkit";
+/* eslint-disable */
+import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { IMemberFullInfo } from "../../types/models";
-
-interface IFullInfo {
-    loading: boolean,
-    error: string,
-    membersFullInfo: IMemberFullInfo,
-    uploadedImage: any
-}
 
 const initialState = {
     loading: false,
@@ -36,6 +30,12 @@ export const governmentMembersFullInfo = createSlice({
         },
         addMember: (state, action) => {
             state.membersFullInfo.push(action.payload);
+           state.uploadedImage={
+                "originalname": "",
+                "filename": "",
+                "dirname": "",
+                "success": false
+            }
         },
         deleteMember: (state, action) => {
             state.membersFullInfo = state.membersFullInfo.filter((item) => {

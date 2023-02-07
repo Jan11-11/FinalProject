@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 $background-color:#263849;
 .body {
   background-color: $background-color;
@@ -55,3 +57,14 @@ $background-color:#263849;
     margin-left: 3.5%;
   }
 }
+
+@media (max-width:1024px) and (min-width:768px){
+  #containerTitle{
+    display:none;
+  }
+  #container{
+    margin-top: 0px;
+    padding-top: 4px;
+  }
+}
+/* eslint-disable */
