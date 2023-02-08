@@ -56,6 +56,7 @@ export const FullInfoRightPart = ({ member, remove, setRemove, status, setStatus
                 }><img className={"edite_img"} src={member.status === "passive" ? "../../../government/editePassive.png" : "../../../government/edite.svg"} /><p id={member.status === "passive" ? "memberAllParagraph" : ""}>Խմբագրել</p></div>
                 <div onClick={(e) => {
                     e.preventDefault();
+                    if(member.id!==3){
                     setRemove(!remove);
                     if (member.status === "active") {
                         setStatus("passive");
@@ -66,6 +67,7 @@ export const FullInfoRightPart = ({ member, remove, setRemove, status, setStatus
                     setKeyId(member.id);
                     navigate("/homeFullInfo");
                 }
+            }
                 } className={member.status === "passive" ? "trash_logo iconDisabled" : "trash_logo"}><img className={"trash_img"} src={member.status === "passive" ? "../../../government/trashPassive.png" : "../../../government/trash.svg"} /><p id={member.status === "passive" ? "memberAllParagraph" : ""}>Ջնջել</p></div>
             </div>
         </div>
