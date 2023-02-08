@@ -6,6 +6,7 @@ import { activeProduct } from "../../store/actions/governmentAddRemoveMembers";
 import { useAppDispatch } from "../../hooks";
 
 
+
 interface IActive {
     done: boolean,
     setDone: (done: boolean) => void,
@@ -17,10 +18,13 @@ interface IActive {
     remove: boolean,
     setRemove: (remove: boolean) => void,
     status: string,
-    setStatus: (status: string) => void
+    setStatus: (status: string) => void,
+    disable:boolean,
+    setDisable:(disable:boolean)=>void,
+    
 }
 
-export const FullInfoRightPart = ({ member, remove, setRemove, status, setStatus, deactivate, setDeactivate, setKeyId, keyId, done, setDone }: IActive) => {
+export const FullInfoRightPart = ({ member,disable,setDisable, remove, setRemove, status, setStatus, deactivate, setDeactivate, setKeyId, keyId, done, setDone }: IActive) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -56,7 +60,11 @@ export const FullInfoRightPart = ({ member, remove, setRemove, status, setStatus
                 }><img className={"edite_img"} src={member.status === "passive" ? "../../../government/editePassive.png" : "../../../government/edite.svg"} /><p id={member.status === "passive" ? "memberAllParagraph" : ""}>Խմբագրել</p></div>
                 <div onClick={(e) => {
                     e.preventDefault();
+                    if(member.id === 3){
+                        setDisable(!disable)
+                    }
                     if(member.id!==3){
+
                     setRemove(!remove);
                     if (member.status === "active") {
                         setStatus("passive");
