@@ -290,6 +290,9 @@
     height: 80%;
   }
 }
+.group{
+  cursor: pointer;
+}
 
 .memberLeftPartDescriptionChild {
   @include memberLeftPartDescriptionChild
