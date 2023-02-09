@@ -33,8 +33,16 @@ export const FullInfoRightPart = ({ member,disable,setDisable, remove, setRemove
     return (
         <div id={status === "passive" ? "" : "memberRightPartHiden"} className={"memberRightPart"}>
             <div className={"active1"} id={"active1"}>
-                <img className={deactivate ? "groupPassive iconDisabled" : "groupPassive"} src={"../../../government/Grouppassive.png"} onClick={(event) => {
-                    setStatus("active");
+                <img className={deactivate ? "groupPassive ":"groupPassive"} src={"../../../government/Grouppassive.png"} onClick={(event) => {
+                   
+                    if (status==="active") {
+                        status="passive";
+                    }
+                    else{
+                        status="active"
+                    }
+                    setDeactivate(!deactivate)
+                    setStatus(status);
                 }} />
                 <p style={member.status === "passive" ? { color: "#9C9C9C" } : { color: "black" }}>Ապաակտիվացնել</p>
                 <div className={"active_logos"}>

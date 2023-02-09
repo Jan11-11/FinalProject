@@ -135,7 +135,7 @@
 }
 
 @mixin memberContentLeftPartDescriptionPTablet {
-  font-size: 12px;
+  font-size: 18px;
   width: 99%;
   margin: 0 auto;
   font-weight: 700;
@@ -145,7 +145,7 @@
 }
 
 @mixin memberContentLeftPartDescriptionSpanTablet {
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 200;
   width: 99%;
 }
@@ -193,7 +193,7 @@
 }
 
 @mixin memberContentLeftPartDescriptionP376_425 {
-  font-size: 12px;
+  font-size: 17px;
   width: 99%;
   margin: 0 auto;
   font-weight: 700;
@@ -203,7 +203,7 @@
 }
 
 @mixin memberContentLeftPartDescriptionSpan376_425 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 200;
   width: 99%;
 }
@@ -244,7 +244,7 @@
 }
 
 @mixin memberContentLeftPartDescriptionP320_375 {
-  font-size: 12px;
+  font-size: 16px;
   width: 97%;
   margin: 0 auto;
   font-weight: 700;
@@ -254,7 +254,7 @@
 }
 
 @mixin memberContentLeftPartDescriptionSpan320_375 {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 200;
   width: 100%;
 }
@@ -372,6 +372,10 @@
 
   .group {
     @include memberLeftPartImageGroupTablet;
+  
+  }
+  #group{
+    z-index: 20;
   }
 
   .memberLeftPartDescription {
@@ -429,6 +433,11 @@
       @include memberContentLeftPartDescriptionSpan376_425;
     }
   }
+
+  #group{
+    z-index: 20;
+  }
+
 }
 
 //small
@@ -470,4 +479,8 @@
   #memberLeftPartDescriptionChildSpan {
     @include memberContentLeftPartDescriptionSpan320_375
   }
+  #group{
+    z-index: 20;
+  }
+
 }
