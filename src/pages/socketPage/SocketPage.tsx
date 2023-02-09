@@ -25,11 +25,14 @@ export function SocketPage() {
         });
         setSocket(ws);
         ws.on("click", (user: any) => {
+            if(auth().accessToken){
             const { id } = user;
             if (ws && ws != null) {
                 navigate("/detail", { state: { user } })
             }
-        })
+            
+        }})
+    
         dispatch(fetchGovernmentMembersInfo())
     }, [dispatch]);
     return (

@@ -36,6 +36,7 @@ export const Home = () => {
         setSocket(ws);
        }
         dispatch(fetchGovernmentMembersInfo())
+        
     }, [dispatch]);
     
 
