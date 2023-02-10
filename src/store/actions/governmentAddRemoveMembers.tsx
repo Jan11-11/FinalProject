@@ -60,7 +60,8 @@ export const deleteProduct = createAsyncThunk(
         }
 
     }
-)
+);
+
 
 export const editeAProduct = createAsyncThunk(
     "edite/Product",
@@ -116,7 +117,6 @@ export const activeProduct = createAsyncThunk(
 
 export const uploadImage = createAsyncThunk(
     "upload/Image",
-
     async (file: any, { dispatch }) => {
         const formData = new FormData();
         formData.append('image', file);

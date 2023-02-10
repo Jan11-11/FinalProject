@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { uniqueProductAction } from "../../store/actions/uniqueProductAction";
 import { useAppSelector, useAppDispatch } from "../../hooks";
+import { deleteUploadImage } from "../../store/slices/GovernmetMembersFullInfo";
 
 type MyEdite = Record<string | number, string | string>
 
@@ -52,13 +53,13 @@ export function EditDataProduct() {
         editeProduct.picture = product[0].picture;
       }
       setEditeProduct({ ...editeProduct });
-      if (uploadedImage.dirname != null && uploadedImage.dirname != "") {
+      if (uploadedImage.dirname !== null && uploadedImage.dirname !== "") {
         editeProduct.picture = uploadedImage.dirname;
         setEditeProduct({ ...editeProduct });
       }
 
     }
-  }, [product, uploadedImage, editeProduct.picture]);
+  }, [product, uploadedImage]);
 
 
   if (storeId) {
@@ -99,6 +100,7 @@ export function EditDataProduct() {
   }
   const addConfirme = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    
     setEditeErrorProduct({});
     let check = 0;
     for (let key in regCheck) {
@@ -130,6 +132,7 @@ export function EditDataProduct() {
 
     if (!(Object.keys(editeErrorProduct).length) && check === 4) {
       dispatch(editeAProduct(editeProduct));
+      dispatch(deleteUploadImage());
       navigate("/homeFullInfo", { state: { id: editeProduct.id } });
     }
   }
@@ -141,7 +144,7 @@ export function EditDataProduct() {
         <div className="pageTitle" id="createTitle"> Տվյալների խմբագրում</div>
         <div className="createpage" id="createpage">
           <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"} id="createimg">
-            <img id={editeProduct.picture ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname : editeProduct.picture ? editeProduct.picture : "/government/backgroundimage.png"} />
+            <img id={editeProduct.picture ? "createdImg" : ""} src={ editeProduct.picture ? editeProduct.picture : "/government/backgroundimage.png"} />
           </div>
           <form className="create" id="create" autoComplete="off">
             <div className="createInput" id="createInput">
@@ -166,7 +169,29 @@ export function EditDataProduct() {
             </div>
             <div className="buttons" id="buttons" >
               <div className="rightbtns" id="buttons" >
-                <button className="removeBtn" id="removeBtn">Չեղարկել</button>
+                <button className="removeBtn" id="removeBtn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (Object.values(editeProduct).length) {
+                      for (let key in editeProduct) {
+                          delete editeProduct[key];
+                      }
+                    
+                  }
+                  editeProduct.picture=product[0].picture;
+                  editeProduct.fullname=product[0].fullname;
+                  editeProduct.position=product[0].position;
+                  setEditeProduct({...editeProduct});
+                  if (Object.values(editeErrorProduct).length) {
+                      for (let key in editeErrorProduct) {
+                          delete editeErrorProduct[key];
+                      }
+                      setEditeErrorProduct({ ...editeErrorProduct });
+                  }
+
+
+              }}
+                >Չեղարկել</button>
                 <button className="addBtn" id="addBtn" onClick={addConfirme}> Հաստատել </button>
               </div>
             </div>
@@ -178,9 +203,11 @@ export function EditDataProduct() {
                 </label>
                 <input type="file" accept="image/*" name="file" id="file" style={{ "display": "none" }} onChange={(e) => uploadImageHandler(e)} />
               </div>
-              {editeProduct.picture ? <div id="delDiv" onClick={() => {
-                editeProduct.picture = "";
+                {editeProduct.picture !=null && editeProduct.picture !== "" ? <div id="delDiv" onClick={(e) => {
+                e.preventDefault();
+                 editeProduct.picture="";
                 setEditeProduct({ ...editeProduct });
+
               }}>
                 <img src="../../../../government/trash.svg" />
                 <label>Ջնջել</label>

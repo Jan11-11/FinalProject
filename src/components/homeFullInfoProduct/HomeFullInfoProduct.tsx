@@ -13,12 +13,10 @@ interface IMember {
     keyId: number | null | undefined
     remove: boolean,
     setRemove: (remove: boolean) => void,
-    member: IMemberFullInfo,
-    disable: boolean,
-    setDisable: (disable: boolean) => void,  
+    member: IMemberFullInfo,  
 }
 
-export const HomeFullInfoProduct = ({ member,disable, setDisable, remove, setRemove, keyId, setKeyId, done, setDone }: IMember) => {
+export const HomeFullInfoProduct = ({ member, remove, setRemove, keyId, setKeyId, done, setDone }: IMember) => {
     const [deactivate, setDeactivate] = useState(false);
     const [status, setStatus] = useState("active");
     
@@ -26,7 +24,7 @@ export const HomeFullInfoProduct = ({ member,disable, setDisable, remove, setRem
         <div className={status ? "memberActive member" : member.status ? "member deactivate" : "member"}>
             <div className={"memberContent"}>
                 <FullInfoLeftPart member={member} deactivate={deactivate} remove={remove} setRemove={setRemove} status={status} setStatus={setStatus} />
-                <FullInfoRightPart member={member} disable = {disable} setDisable = {setDisable} deactivate={deactivate} setDeactivate={setDeactivate} setRemove={setRemove} remove={remove} keyId={keyId} setKeyId={setKeyId} status={status} setStatus={setStatus} done={done} setDone={setDone} />
+                <FullInfoRightPart member={member}  deactivate={deactivate} setDeactivate={setDeactivate} setRemove={setRemove} remove={remove} keyId={keyId} setKeyId={setKeyId} status={status} setStatus={setStatus} done={done} setDone={setDone} />
             </div>
         </div>
     )

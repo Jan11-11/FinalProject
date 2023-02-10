@@ -47,6 +47,12 @@ export const governmentMembersFullInfo = createSlice({
                 if (member.id == action.payload[0].id) {
                     member = action.payload[0];
                 }
+                state.uploadedImage={
+                    "originalname": "",
+                    "filename": "",
+                    "dirname": "",
+                    "success": false
+                }
                 return member;
             })
         },
@@ -62,9 +68,17 @@ export const governmentMembersFullInfo = createSlice({
         },
         setImage: (state, action) => {
             state.uploadedImage = action.payload || {};
+        },
+        deleteUploadImage:(state) => {
+            state.uploadedImage={
+                "originalname": "",
+                "filename": "",
+                "dirname": "",
+                "success": false
+            }
         }
     }
 
 });
-export const { successError, successFullfit, addMember, deleteMember, successLoading, editeMember, activeMember, setImage } = governmentMembersFullInfo.actions;
+export const {deleteUploadImage, successError, successFullfit, addMember, deleteMember, successLoading, editeMember, activeMember, setImage } = governmentMembersFullInfo.actions;
 export default governmentMembersFullInfo.reducer;

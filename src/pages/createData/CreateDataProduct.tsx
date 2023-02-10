@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { addProduct, uploadImage } from "../../store/actions/governmentAddRemoveMembers";
+import {deleteUploadImage} from "../../store/slices/GovernmetMembersFullInfo";
 interface ICreateMember {
     [key: string]: string
 }
@@ -29,6 +30,7 @@ export function CreateDataProduct() {
 
     const addConfirme = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+       
         let check = 0;
         for (let key in regCheck) {
             if (key !== "img") {
@@ -63,6 +65,7 @@ export function CreateDataProduct() {
         if (!(Object.keys(errorProduct).length) && check === 3) {
 
             dispatch(addProduct(createProduct));
+            dispatch(deleteUploadImage());
             navigate("/homeFullInfo", { state: createProduct, });
 
 
@@ -140,6 +143,7 @@ export function CreateDataProduct() {
                                         }
                                         setErrorProduct({ ...errorProduct });
                                     }
+                                    dispatch(deleteUploadImage());
 
                                 }}>Չեղարկել</button>
                                 <button type="submit" className="addBtn" id="addBtn" onClick={addConfirme}>Հաստատել </button>

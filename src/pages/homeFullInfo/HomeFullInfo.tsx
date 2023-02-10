@@ -9,13 +9,12 @@ import { Header } from "../../components/header";
 import { useNavigate } from "react-router-dom";
 import "./homeFullInfo.scss";
 import { Loading } from "../../components/loading";
-import { DisableRemove } from "../../components/disableRemove";
+
 
 export const HomeFullInfo = () => {
     const [keyId, setKeyId] = useState<number | undefined | null>();
     const [remove, setRemove] = useState(false);
     const [done, setDone] = useState(false)
-    const [disable,setDisable] = useState(false);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { membersFullInfo } = useAppSelector((state) => state.membersFullInfo);
@@ -32,8 +31,8 @@ export const HomeFullInfo = () => {
 
        
         <div className={"all"}>
-             {disable?
-            <DisableRemove disable={disable} setDisable={setDisable}/>:""} 
+             
+            
             <div className={remove ? "overlay" : "overlayPassive"}></div>
             <Header
             
@@ -56,7 +55,7 @@ export const HomeFullInfo = () => {
 
                             return (
                                 
-                                <HomeFullInfoProduct disable ={disable} setDisable = {setDisable} key={member.id} done={done} setDone={setDone} member={member} keyId={keyId} setKeyId={setKeyId} remove={remove} setRemove={setRemove} />
+                                <HomeFullInfoProduct  key={member.id} done={done} setDone={setDone} member={member} keyId={keyId} setKeyId={setKeyId} remove={remove} setRemove={setRemove} />
                             )
                         }) : <Loading />}
                     </div>

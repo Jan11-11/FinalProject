@@ -1,8 +1,10 @@
 /* eslint-disable */
 import "./header.scss";
 import { useNavigate } from "react-router-dom";
-
+import { deleteUploadImage } from "../../store/slices/GovernmetMembersFullInfo";
+import { useAppDispatch } from "../../hooks";
 export const Header = () => {
+    const dispatch=useAppDispatch();
     const navigate = useNavigate();
     return (
         <header className={"header"}>
@@ -18,6 +20,7 @@ export const Header = () => {
                         event.preventDefault();
                         localStorage.removeItem('auth');
                         localStorage.removeItem('id');
+                        dispatch(deleteUploadImage());
                         navigate("/");
                     }
                     }>
