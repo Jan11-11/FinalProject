@@ -9,7 +9,6 @@ export const fetchGovernmentMemberFullInfo = () => {
         try {
             dispatch(successLoading());
             const response = await axios.get(`${URL}/api/v1/users/fullList`);
-            console.log(response,"response")
             if (response.status === 200 && response.statusText === "OK") {
                 dispatch(successFullfit(response.data));
             }

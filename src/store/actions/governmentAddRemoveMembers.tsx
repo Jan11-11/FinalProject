@@ -4,7 +4,7 @@ import { addMember, deleteMember, editeMember, activeMember, setImage } from "..
 import { store } from "../index";
 import axios from "axios";
 const PATH_URL = process.env.REACT_APP_BASE_URL1;
-console.log(PATH_URL,"PAth url");
+
 
 interface IDelete {
     id: number | null | undefined
@@ -72,11 +72,11 @@ export const editeAProduct = createAsyncThunk(
             fullname: item.fullname,
             position: item.position,
         }
-        console.log(member);
+      
 
         try {
             const response = await axios.put(`${PATH_URL}/api/v1/users/${item.id}`, member);
-            console.log(response);
+           
             if (response.status === 200 && response.statusText === "OK") {
                 dispatch(editeMember(response.data));
             }
