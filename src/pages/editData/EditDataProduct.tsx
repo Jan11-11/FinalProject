@@ -201,7 +201,7 @@ export function EditDataProduct() {
                   <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />
                   Ներբեռնել նկար
                 </label>
-                <input type="file" accept="image/*" name="file" id="file" value={editeProduct.picture?editeProduct.picture:"/government/backgroundimage.png"} style={{ "display": "none" }} onChange={(e) => uploadImageHandler(e)} />
+                <input type="file" accept="image/*" name="file" id="file"  style={{ "display": "none" }} onChange={(e) => uploadImageHandler(e)} />
               </div>
                 {editeProduct.picture !=null && editeProduct.picture !== "" ? <div id="delDiv" onClick={(e) => {
                 e.preventDefault();
