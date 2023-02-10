@@ -154,7 +154,7 @@ export function CreateDataProduct() {
                                 <img src={errorProduct.img ? "/government/down.svg" : "/government/vectordown1.png"} className={errorProduct.img ? "imageErrorIcon" : ""} />
                                 Ներբեռնել նկար
                             </label>
-                            <input type="file" accept="image/*" name="file" id="file" onChange={uploadImageHandler}
+                            <input type="file" accept="image/*" name="file" id="file" value={createProduct.picture?createProduct.picture:""} onChange={uploadImageHandler}
                                 style={{ "display": "none" }} />
                         </div>
                     </form>
