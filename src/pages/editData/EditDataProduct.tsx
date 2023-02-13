@@ -204,7 +204,7 @@ export function EditDataProduct() {
                 <button className="addBtn" id="addBtn" onClick={addConfirme}> Հաստատել </button>
               </div>
             </div>
-            <div className={editeErrorProduct.picture ? "leftbtn imageErrorMessage" : "leftbtn"} id={editeErrorProduct.picture ?"leftBtn":"leftBtnEmpty"}>
+            <div className={editeErrorProduct.picture ? "leftbtn imageErrorMessage" : "leftbtn"} id={"leftBtn"}>
               <div id="uppDiv">
                 <label htmlFor="file">
                   <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />
