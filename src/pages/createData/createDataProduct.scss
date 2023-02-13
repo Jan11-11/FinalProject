@@ -40,7 +40,8 @@
 
   #createdImg {
     width: 100%;
-    margin: auto auto;
+    height: 100%;
+    margin: 0px;
   }
 
   .create {
@@ -637,4 +638,17 @@
     margin-left: 5%;
   }
 
+}
+
+@media (max-width:320px){
+  #createImage{
+      height: 182px;
+      img{
+          height: 134px;
+      }
+  }
+  .createpage .createimg img {
+    display: block;
+    margin: 20px auto 0px auto;
+}
 }

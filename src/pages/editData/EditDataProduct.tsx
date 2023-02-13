@@ -34,6 +34,8 @@ export function EditDataProduct() {
     if (e.target.files) {
       dispatch(uploadImage(e.target.files[0]));
     }
+    editeErrorProduct.picture = "";
+    setEditeErrorProduct({...editeErrorProduct})
   }
 
 
@@ -98,6 +100,13 @@ export function EditDataProduct() {
     }
 
   }
+  const blurImage = (event: React.FocusEvent<HTMLElement>) => {
+    event.preventDefault();
+    if(editeProduct.picture && uploadedImage.dirname){
+      delete editeErrorProduct.picture
+    }
+
+  }
   const addConfirme = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     
@@ -143,8 +152,8 @@ export function EditDataProduct() {
       <div className="container" id="container">
         <div className="pageTitle" id="createTitle"> Տվյալների խմբագրում</div>
         <div className="createpage" id="createpage">
-          <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"} id="createimg">
-            <img id={editeProduct.picture ? "createdImg" : ""} src={ editeProduct.picture ? editeProduct.picture : "/government/backgroundimage.png"} />
+          <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"} aria-flowto={editeProduct.picture?"uppimg":""} id="createimg">
+            <img id={editeProduct.picture ? "createdImg" : ""}  src={ editeProduct.picture ? editeProduct.picture : "/government/backgroundimage.png"} />
           </div>
           <form className="create" id="create" autoComplete="off">
             <div className="createInput" id="createInput">
@@ -195,7 +204,7 @@ export function EditDataProduct() {
                 <button className="addBtn" id="addBtn" onClick={addConfirme}> Հաստատել </button>
               </div>
             </div>
-            <div className={editeErrorProduct.picture ? "leftbtn imageErrorMessage" : "leftbtn"} id="leftBtn">
+            <div className={editeErrorProduct.picture ? "leftbtn imageErrorMessage" : "leftbtn"} id={editeErrorProduct.picture ?"leftBtn":"leftBtnEmpty"}>
               <div id="uppDiv">
                 <label htmlFor="file">
                   <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />

@@ -26,6 +26,8 @@ export function CreateDataProduct() {
         if (e.target.files[0]) {
             dispatch(uploadImage(e.target.files[0]));
         }
+        errorProduct.img = "";
+        setErrorProduct({...errorProduct})
     };
 
     const addConfirme = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -105,9 +107,9 @@ export function CreateDataProduct() {
         <div className='createData'>
             <Header />
             <div className="container" id="container">
-                <div className="pageTitle" id="createTitle"> Ավելացնել նոր նկար</div>
+                <div className="pageTitle" id="createTitle"> Ավելացնել նոր տվյալ</div>
                 <div className="createpage" id="createpage">
-                    <div className={errorProduct.img ? "createimg imageError" : "createimg"} id="createImage">
+                    <div className={errorProduct.img ? "createimg imageError" : "createimg"} aria-flowto={uploadedImage.dirname?"uppimg":""} id="createImage">
                         <img id={uploadedImage.dirname ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname : " ../../../../government/backgroundimage.png"} />
                     </div>
                     <form className="create" id="create" autoComplete="off">
@@ -149,7 +151,7 @@ export function CreateDataProduct() {
                                 <button type="submit" className="addBtn" id="addBtn" onClick={addConfirme}>Հաստատել </button>
                             </div>
                         </div>
-                        <div className={errorProduct.img ? "leftbtn imageErrorMessage" : "leftbtn"} id="leftBtn">
+                        <div className={errorProduct.img ? "leftbtn imageErrorMessage" : "leftbtn"} id={"leftBtn"}>
                             <label htmlFor="file">
                                 <img src={errorProduct.img ? "/government/down.svg" : "/government/vectordown1.png"} className={errorProduct.img ? "imageErrorIcon" : ""} />
                                 Ներբեռնել նկար

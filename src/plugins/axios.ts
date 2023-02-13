@@ -2,6 +2,7 @@ import axios from "axios";
 import auth from "../auth";
 const BASE_URL1 = process.env.REACT_APP_BASE_URL;
 axios.defaults.baseURL = BASE_URL1;
+
 axios.interceptors.request.use(function (config: any) {
     if (auth().accessToken) {
         config.headers.Authorization = `Bearer ${auth().accessToken}`;
