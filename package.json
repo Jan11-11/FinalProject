@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -15,6 +16,7 @@
     "antd": "^5.1.4",
     "axios": "^1.2.0",
     "babel-plugin-macros": "^3.1.0",
+    "dotenv": "^16.0.3",
     "formik": "^2.2.9",
     "fs": "^0.0.1-security",
     "mime-types": "^2.1.35",
@@ -28,13 +30,13 @@
     "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4",
     "typescript": "^4.9.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
+    "test": "node --max_old_space_size=2560 node_modules/.bin/react-scripts test",
+    "eject": "node --max_old_space_size=2560 node_modules/.bin/react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

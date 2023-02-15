@@ -64,11 +64,10 @@ export function CreateDataProduct() {
         else {
             setErrorProduct({ ...errorProduct, img: "Ներբեռնեք նկարը" });
         }
-        if (!(Object.keys(errorProduct).length) && check === 3) {
-
+        if ((Object.keys(errorProduct).length<2) && check === 3) {
             dispatch(addProduct(createProduct));
-            dispatch(deleteUploadImage());
             navigate("/homeFullInfo", { state: createProduct, });
+            // dispatch(deleteUploadImage());
 
 
         }

@@ -141,8 +141,8 @@ export function EditDataProduct() {
 
     if (!(Object.keys(editeErrorProduct).length) && check === 4) {
       dispatch(editeAProduct(editeProduct));
-      dispatch(deleteUploadImage());
       navigate("/homeFullInfo", { state: { id: editeProduct.id } });
+      // dispatch(deleteUploadImage());
     }
   }
 
