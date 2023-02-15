@@ -43,6 +43,7 @@ export const governmentMembersFullInfo = createSlice({
             })
         },
         editeMember: (state, action) => {
+            
             state.membersFullInfo = state.membersFullInfo.map((member) => {
                 if (member.id == action.payload[0].id) {
                     member = action.payload[0];

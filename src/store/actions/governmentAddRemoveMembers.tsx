@@ -67,6 +67,7 @@ export const deleteProduct = createAsyncThunk(
 export const editeAProduct = createAsyncThunk(
     "edite/Product",
     async (item: MyEdite, { rejectWithValue, dispatch }) => {
+
         const member = {
             picture: item.picture,
             fullname: item.fullname,
@@ -78,6 +79,7 @@ export const editeAProduct = createAsyncThunk(
             const response = await axios.put(`${PATH_URL}/api/v1/users/${item.id}`, member);
            
             if (response.status === 200 && response.statusText === "OK") {
+                
                 dispatch(editeMember(response.data));
             }
         }
