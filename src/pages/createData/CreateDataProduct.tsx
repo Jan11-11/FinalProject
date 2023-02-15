@@ -66,8 +66,8 @@ export function CreateDataProduct() {
         }
         if ((Object.keys(errorProduct).length<2) && check === 3) {
             dispatch(addProduct(createProduct));
+            dispatch(deleteUploadImage());
             navigate("/homeFullInfo", { state: createProduct, });
-            // dispatch(deleteUploadImage());
 
 
         }
