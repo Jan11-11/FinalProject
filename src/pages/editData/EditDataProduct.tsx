@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { uniqueProductAction } from "../../store/actions/uniqueProductAction";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { deleteUploadImage } from "../../store/slices/GovernmetMembersFullInfo";
+import { fetchGovernmentMemberFullInfo } from "../../store/actions/governmentMembersFullInfoAction";
 
 type MyEdite = Record<string | number, string | string>
 
@@ -34,7 +35,7 @@ export function EditDataProduct() {
     if (e.target.files) {
       dispatch(uploadImage(e.target.files[0]));
     }
-    
+
     editeErrorProduct.picture = "";
     setEditeErrorProduct({...editeErrorProduct})
   }
@@ -138,6 +139,7 @@ export function EditDataProduct() {
       dispatch(editeAProduct(editeProduct));
       dispatch(deleteUploadImage());
       navigate("/homeFullInfo", { state: { id: editeProduct.id } });
+      dispatch(fetchGovernmentMemberFullInfo());
       
     }
   }

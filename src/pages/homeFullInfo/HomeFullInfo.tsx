@@ -25,7 +25,7 @@ export const HomeFullInfo = () => {
         navigate("/");
     };
         dispatch(fetchGovernmentMemberFullInfo());    
-    }, [dispatch, keyId, done,membersFullInfo]);
+    }, [dispatch, keyId, done,]);
 
     return (
 

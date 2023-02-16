@@ -19,12 +19,13 @@ export function SocketPage() {
     useEffect(() => {
     const loc:string | any = localStorage.getItem("auth");
     const local = JSON.parse(loc);
-    if(local==null || local?.id!=2){
+    if(local==null || local?.role!="parlamentpresident"){
         navigate("/");
     };
         const ws = io(`${URL}`, {
             extraHeaders: {
                 Authorization: auth().accessToken,
+                //auth_token
             }
         });
         setSocket(ws);

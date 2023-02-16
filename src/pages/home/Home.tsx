@@ -17,20 +17,23 @@ export const Home = () => {
    
     const [socket, setSocket] = useState<any>(null)
     const [socketColor, setSocketColor] = useState(0);
-    const { membersFullInfo, loading, error } = useAppSelector((state) => state.membersFullInfo);
+    const { membersFullInfo, loading } = useAppSelector((state) => state.membersFullInfo);
     const dispatch = useAppDispatch();
     const URL = process.env.REACT_APP_BASE_URL1;
+
+
     
     useEffect(() => {
     const loc:string | any = localStorage.getItem("auth");
     const local = JSON.parse(loc);
-    if(local==null || local?.id!=3){
+    if(local==null || local?.role!="primeminister"){
         navigate("/");
     };
-       if(local?.id==3){
+       if(local?.role=="primeminister"){
         const ws = io(`${URL}`, {
             extraHeaders: {
                 Authorization: auth().accessToken,
+                //auth_token
             }
         });
         setSocket(ws);
@@ -39,6 +42,7 @@ export const Home = () => {
         
     }, [dispatch]);
     
+
 
 
     return (
@@ -52,7 +56,6 @@ export const Home = () => {
                             <HomeInfoProduct member={member} key={member.id} socket={socket} socketColor={socketColor} setSocketColor={setSocketColor} />
                         )
                     }) : loading
-
                     }
                 </div>
             </div>
