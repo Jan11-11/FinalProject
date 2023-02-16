@@ -30,7 +30,7 @@ export const Home = () => {
        if(local?.id==3){
         const ws = io(`${URL}`, {
             extraHeaders: {
-                auth_token: auth().accessToken,
+                Authorization: auth().accessToken,
             }
         });
         setSocket(ws);

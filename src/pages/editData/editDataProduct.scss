@@ -209,6 +209,14 @@ $background-color: #0B1219;
     }
   }
 
+  @media (max-width:1129px) and (min-width:1071px){
+    #buttons{
+    margin-left: 1%;
+      width: 100%;
+      display: flex;
+    }
+    }
+
 @media (max-width:1071px) and (min-width:769px) {
 
     #container {

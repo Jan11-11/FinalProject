@@ -211,6 +211,14 @@
   border: 1px solid red;
 }
 
+@media (max-width:1129px) and (min-width:1071px){
+#buttons{
+margin-left: 1%;
+  width: 100%;
+  display: flex;
+}
+}
+
 @media (max-width:1071px) and (min-width:905px) {
   #container {
     width: 90%;

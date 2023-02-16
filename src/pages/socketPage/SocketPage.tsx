@@ -24,7 +24,7 @@ export function SocketPage() {
     };
         const ws = io(`${URL}`, {
             extraHeaders: {
-                auth_token: auth().accessToken,
+                Authorization: auth().accessToken,
             }
         });
         setSocket(ws);
@@ -36,6 +36,8 @@ export function SocketPage() {
             }
             
         }})
+        
+        
     
         dispatch(fetchGovernmentMembersInfo())
     }, [dispatch]);

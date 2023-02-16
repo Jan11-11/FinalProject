@@ -34,6 +34,7 @@ export function EditDataProduct() {
     if (e.target.files) {
       dispatch(uploadImage(e.target.files[0]));
     }
+    
     editeErrorProduct.picture = "";
     setEditeErrorProduct({...editeErrorProduct})
   }
@@ -55,7 +56,7 @@ export function EditDataProduct() {
         editeProduct.picture = product[0].picture;
       }
       setEditeProduct({ ...editeProduct });
-      if (uploadedImage.dirname !== null && uploadedImage.dirname !== "") {
+      if (uploadedImage.dirname != null && uploadedImage.dirname != "") {
         editeProduct.picture = uploadedImage.dirname;
         setEditeProduct({ ...editeProduct });
       }
@@ -100,13 +101,7 @@ export function EditDataProduct() {
     }
 
   }
-  const blurImage = (event: React.FocusEvent<HTMLElement>) => {
-    event.preventDefault();
-    if(editeProduct.picture && uploadedImage.dirname){
-      delete editeErrorProduct.picture
-    }
 
-  }
   const addConfirme = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     
@@ -143,6 +138,7 @@ export function EditDataProduct() {
       dispatch(editeAProduct(editeProduct));
       dispatch(deleteUploadImage());
       navigate("/homeFullInfo", { state: { id: editeProduct.id } });
+      
     }
   }
 
