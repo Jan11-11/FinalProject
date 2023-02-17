@@ -32,8 +32,8 @@ export const Home = () => {
        if(local?.role=="primeminister"){
         const ws = io(`${URL}`, {
             extraHeaders: {
-                auth_token: auth().accessToken,
-                //Authorization
+                Authorization: auth().accessToken,
+                //auth_token
             }
         });
         setSocket(ws);
