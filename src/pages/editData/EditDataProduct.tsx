@@ -69,20 +69,20 @@ export function EditDataProduct() {
   if (storeId) {
     editeProduct.id = storeId;
   }
-
+  
   const blurFullName = (event: React.FocusEvent<HTMLElement>) => {
     event.preventDefault();
-    delete editeErrorProduct.fullName;
-    setEditeErrorProduct({ ...editeErrorProduct });
+    delete editeErrorProduct['fullname'];
+    setEditeErrorProduct({ ...editeErrorProduct })
     if (editeProduct["fullname"] === "" || editeProduct["fullname"] == null) {
-      editeErrorProduct.fullname = "Պարտադիր դաշտ";
-      setEditeErrorProduct({ ...editeErrorProduct })
+        editeErrorProduct.fullname = "Պարտադիր դաշտ";
+        setEditeErrorProduct({ ...editeErrorProduct });
     }
     else if (!regCheck["fullname"].test(editeProduct["fullname"])) {
-      editeErrorProduct.fullname = "Դաշտը լրացնել հայատառ";
-      setEditeErrorProduct({ ...editeErrorProduct });
+        editeErrorProduct.fullname = "Դաշտը լրացնել հայատառ";
+        setEditeErrorProduct({ ...editeErrorProduct })
     }
-  }
+}
 
 
   const blurTitle = (event: React.FocusEvent<HTMLElement>) => {
@@ -180,7 +180,7 @@ export function EditDataProduct() {
                   setEditeProduct({ ...editeProduct, [event.target.name]: event.target.value })
                 }
                 } placeholder='Անուն Ազգանուն' />
-                <p className="fullNameError" id="fullNameError">{editeErrorProduct.fullname}</p>
+                <p className="errorMessageForName" id="errorMessageForName">{editeErrorProduct.fullname}</p>
               </div>
               <div className="createInfo" id="createInfo">
                 <label className={editeErrorProduct.position ? "labelError" : ""}>Պաշտոն</label>
@@ -189,7 +189,7 @@ export function EditDataProduct() {
                   setEditeProduct({ ...editeProduct, [event.target.name]: event.target.value })
                 }
                 } placeholder='Օր․՝ ՀՀ վարչապետ' />
-                <p className="titleError" id="titleError">{editeErrorProduct.position}</p>
+                <p className="errorMessageForTitle" id={editeErrorProduct.position ? "errorMessageForTitle" : "hideErrorMessage"}>{editeErrorProduct.position}</p>
               </div>
             </div>
             <div className="buttons" id="buttons" >

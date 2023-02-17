@@ -31,7 +31,6 @@
 
   .createimg {
     width: 100%;
-    // height: 308px;
     height: 80%;
     background: #F9F9F9;
     position: relative;
@@ -231,6 +230,31 @@
   height: 0;
   border: 1px solid red;
 }
+#createInfo{
+  input[type="text"]::placeholder{
+    padding-left: 12px;
+  }
+}
+
+#createName{
+  input[type="text"]::placeholder{
+    padding-left: 10px;
+  }
+}
+
+#createName{
+  input{
+    padding-left: 10px;
+  }
+}
+
+#createInfo{
+  input{
+    padding-left: 10px;
+  padding-top: 10px;
+  }
+}
+
 
 @media (max-width:1071px) and (min-width:905px) {
  
