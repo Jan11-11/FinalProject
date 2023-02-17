@@ -11,8 +11,7 @@ interface IMember {
 export const HomeInfoProduct = ({ member, socket, socketColor, setSocketColor }: IMember) => {
     let user: string | any = localStorage.getItem("auth");
     const user_id = JSON.parse(user)?.id;
-    
-    
+        
     return (
         <div className={"member"} onClick={(event) => {
             event.preventDefault();
@@ -28,3 +27,4 @@ export const HomeInfoProduct = ({ member, socket, socketColor, setSocketColor }:
         </div>
     );
 }
+

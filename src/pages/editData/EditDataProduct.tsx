@@ -84,24 +84,20 @@ export function EditDataProduct() {
     }
   }
 
+
   const blurTitle = (event: React.FocusEvent<HTMLElement>) => {
     event.preventDefault();
     delete editeErrorProduct['position'];
     setEditeErrorProduct({ ...editeErrorProduct })
     if (editeProduct["position"] === "" || editeProduct["position"] == null) {
-      editeErrorProduct.position = "Պարտադիր դաշտ";
-      setEditeErrorProduct({ ...editeErrorProduct });
-    }
-    else if (editeProduct["position"].length > 150) {
-      editeErrorProduct.fullname = "Առավելագույնը 150 հայատառ նիշ";
-      setEditeErrorProduct({ ...editeErrorProduct })
+        editeErrorProduct.position = "Պարտադիր դաշտ";
+        setEditeErrorProduct({ ...editeErrorProduct });
     }
     else if (!regCheck["position"].test(editeProduct["position"])) {
-      editeErrorProduct.fullname = "Դաշտը լրացնել հայատառ";
-      setEditeErrorProduct({ ...editeErrorProduct })
+        editeErrorProduct.position = "Դաշտը լրացնել հայատառ";
+        setEditeErrorProduct({ ...editeErrorProduct })
     }
-
-  }
+}
 
   const addConfirme = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -150,8 +146,30 @@ export function EditDataProduct() {
       <div className="container" id="container">
         <div className="pageTitle" id="createTitle"> Տվյալների խմբագրում</div>
         <div className="createpage" id="createpage">
-          <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"} aria-flowto={editeProduct.picture?"uppimg":""} id="createimg">
+          <div className="createLeftpart" id="createLeftpart">
+          <div className={editeErrorProduct.picture ? "createimg imageError" : "createimg"}  id="createImage">
             <img id={editeProduct.picture ? "createdImg" : ""}  src={ editeProduct.picture ? editeProduct.picture : "/government/backgroundimage.png"} />
+            
+          </div>
+          <div className={editeErrorProduct.picture ? "leftbtn imageErrorMessage" : "leftbtn"} id={"leftBtn"}>
+              <div id="uppDiv">
+                <label htmlFor="file">
+                  <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />
+                  Ներբեռնել նկար
+                </label>
+                <input type="file" accept="image/*" name="file" id="file"  style={{ "display": "none" }} value={""} onChange={(e) => uploadImageHandler(e)} />
+              </div>
+              
+                {editeProduct.picture !=null && editeProduct.picture !== "" ? <div id="delDiv" onClick={(e) => {
+                e.preventDefault();
+                 editeProduct.picture="";
+                setEditeProduct({ ...editeProduct });
+
+              }}>
+                <img src="../../../../government/trash.svg" />
+                <label>Ջնջել</label>
+              </div> : ""}
+            </div>
           </div>
           <form className="create" id="create" autoComplete="off">
             <div className="createInput" id="createInput">
@@ -175,7 +193,6 @@ export function EditDataProduct() {
               </div>
             </div>
             <div className="buttons" id="buttons" >
-              <div className="rightbtns" id="buttons" >
                 <button className="removeBtn" id="removeBtn"
                 onClick={(e) => {
                   e.preventDefault();
@@ -195,31 +212,12 @@ export function EditDataProduct() {
                       }
                       setEditeErrorProduct({ ...editeErrorProduct });
                   }
-
-
               }}
                 >Չեղարկել</button>
                 <button className="addBtn" id="addBtn" onClick={addConfirme}> Հաստատել </button>
-              </div>
+              
             </div>
-            <div className={editeErrorProduct.picture ? "leftbtn imageErrorMessage" : "leftbtn"} id={"leftBtn"}>
-              <div id="uppDiv">
-                <label htmlFor="file">
-                  <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />
-                  Ներբեռնել նկար
-                </label>
-                <input type="file" accept="image/*" name="file" id="file"  style={{ "display": "none" }} onChange={(e) => uploadImageHandler(e)} />
-              </div>
-                {editeProduct.picture !=null && editeProduct.picture !== "" ? <div id="delDiv" onClick={(e) => {
-                e.preventDefault();
-                 editeProduct.picture="";
-                setEditeProduct({ ...editeProduct });
-
-              }}>
-                <img src="../../../../government/trash.svg" />
-                <label>Ջնջել</label>
-              </div> : ""}
-            </div>
+           
           </form>
         </div>
       </div>

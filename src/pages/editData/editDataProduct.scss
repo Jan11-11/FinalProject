@@ -1,542 +1,607 @@
-$background-color: #0B1219;
 @use "sass:math";
-
 .createData {
-    overflow-x: hidden;
-    font-family: Segoe UI;
+  overflow-x: hidden;
+  font-family: "Segoe UI";
 }
 
 .container {
-    width: 85%;
-    margin: 0 auto;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .pageTitle {
-    width: 100%;
-    font-weight: 700;
-    font-size: 30px;
-    margin-top: 3%;
-}
-
-#createdImg {
-    width: 100%;
-    object-fit: cover;
-    object-position: 40% 20%;
-    margin: 0px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 30px;
+  margin-top: 3%;
 }
 
 .createpage {
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+
+  position: relative;
+
+  .createLeftpart{
+    width: 40%;
+  }
+
+  .createimg {
     width: 100%;
-    height: auto;
-    margin-top: 30px;
+    // height: 308px;
+    height: 80%;
+    background: #F9F9F9;
+    position: relative;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    
+    
+    img{
+      transform: translate(-50%, -50%);
+      max-width: 100%;
+      height: auto;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+    
+  }
+
+  #createdImg {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+  }
+
+  .create {
+    width: 56%;
     position: relative;
 
-    .createimg {
-        width: 35%;
-        margin-top: -6%;
-        height: 308px;
-        background: #F9F9F9;
+    .createInput {
+      width: 100%;
+      position: relative;
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 40px;
+      .createName {
+        width: 100%;
+
+        label {
+          width: 100%;
+          font-weight: 400;
+          font-size: 14px;
         }
-    }
-    .create {
-        width: 60%;
+
+        input {
+          width: 100%;
+          padding: 12px 2px;
+          border: 1px solid #0B1219;
+        }
+      }
+
+      .createInfo {
+        width: 100%;
         position: relative;
-        .createInput {
-            width: 100%;
-            .createName {
-                width: 100%;
-                label {
-                    width: 100%;
-                    font-weight: 400;
-                    font-size: 14px;
-                }
+        margin-top: 30px;
 
-                input {
-                    width: 100%;
-                    padding: 12px 2px;
-                    border: 1px solid #0B1219;
-                }
-            }
-            .createInfo {
-                width: 100%;
-                margin-top: 62px;
-
-                label {
-                    width: 100%;
-                    font-weight: 400;
-                    font-size: 14px;
-                }
-                input {
-                    width: 100%;
-                    padding-bottom: 20%;
-                }
-            }
+        label {
+          width: 100%;
+          font-weight: 400;
+          font-size: 14px;
         }
 
-        .buttons {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 5%;
-            .removeBtn {
-                border: 2px solid #06554D;
-                background-color: #FFFFFF;
-                padding: 12px 80px 16px 80px;
-                font-size: 20px;
-            }
-
-            .addBtn {
-                // width: 40%;
-                margin-left: 24px;
-                color: #FFFFFF;
-                border: 1px solid#06554D;
-                background-color: #06554D;
-                padding: 12px 80px 16px 80px;
-                font-size: 20px;
-            }
+        input {
+          width: 100%;
+          padding-bottom: 20%;
         }
-
-        .leftbtn {
-            position: absolute;
-            left: -65%;
-            top: 90%;
-            display: flex;
-            justify-content: space-between;
-            img {
-                margin-right: 10px;
-            }
-        }
+      }
     }
+
+   
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 3rem;
+      width: 100%;
+
+      .removeBtn {
+        border: 2px solid #06554D;
+        background-color: #FFFFFF;
+        padding: 12px 0px 16px 0px;
+        font-size: 20px;
+        width: 39%;
+        cursor: pointer;
+        
+      }
+
+      .addBtn {
+        margin-left: 24px;
+        color: #FFFFFF;
+        border: 1px solid#06554D;
+        background-color: #06554D;
+        padding: 12px 0px 16px 0px;
+        font-size: 20px;
+        width: 39%;
+        cursor: pointer;
+      }
+    }
+
+    .addBtn:hover{
+      cursor: pointer;
+      background: #E1AA5A;
+    }
+    .addBtn:active{
+      cursor: pointer;
+      background: #9E9E9E;
+
+    }
+    .removeBtn:hover{
+      cursor: pointer;
+      background: #E1AA5A;
+    }
+    .removeBtn:active{
+      cursor: pointer;
+      background: #9E9E9E;
+
+    }
+
+    
+  }
+}
+#leftBtn {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+
+#delDiv{
+ display: flex;
+ align-items: center;
+}  
+  img {
+    margin-right: 10px;
+  }
 }
 
-.fullNameError {
-    height: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    color: red;
+.leftbtn{
+  label:hover{
+    cursor: pointer;
+  }
+}
+.imageErrorIcon {
+  color: red;
+  fill: red;
+  filter: red;
 }
 
-.titleError {
-    height: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    color: red;
+.inputError {
+  color: red;
+  border: 1px solid red;
 }
 
-.imageErrorMessage {
-    color: red;
-}
-
-.imageError {
-    border: 1px solid red;
-}
-
-.labelError {
-    color: red;
-}
-
-#titleErrorMessage {
-    border: 1px solid red;
-}
-
-#titleErrorMessage::placeholder {
-    color: red;
+#inputError::placeholder {
+  color: red;
 }
 
 #inputError {
-    border: 1px solid red;
+  color: red;
+  border: 1px solid red;
 }
 
-#leftBtn {
-    top: 85%;
+.inputError::placeholder {
+  color: red;
+}
+
+.labelError {
+  color: red;
+}
+
+#errorMessageForName {
+  width: 100%;
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  font-family: "Segoe UI";
+  color: red;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#errorMessageForTitle {
+  width: 100%;
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  font-family: "Segoe UI";
+  color: red;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+}
+
+#hideErrorMessage {
+  display: none;
+}
+
+.imageErrorMessage {
+  color: red;
+}
+
+.imageError {
+  width: 42%;
+  height: 0;
+  border: 1px solid red;
+}
+
+@media (max-width:1071px) and (min-width:905px) {
+ 
+
+  #createTitle {
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  #createpage {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    padding-right: 42%;
-}
-.addBtn:hover{
-    cursor: pointer;
-    background: #E1AA5A;
+    flex-wrap: no-wrap;
+    justify-content: center;
+    margin-top: 36px;
   }
-  .addBtn:active{
-    cursor: pointer;
-    background: #9E9E9E;
 
-  }
-  .removeBtn:hover{
-    cursor: pointer;
-    background: #E1AA5A;
-  }
-  .removeBtn:active{
-    cursor: pointer;
-    background: #9E9E9E;
-
-  }
-  #createInfo{
-    input[type="text"]::placeholder{
-      padding-left: 12px;
-    //   transform:translateY(10px);
-
+  #createImage {
+    height: 70%;
+    margin-top: 30px;
+    img{
+      height: 220px;
     }
   }
 
-  #createName{
-    input[type="text"]::placeholder{
-      padding-left: 10px;
-    }
+  #create {
+    width: 50%;
+    margin-left: 3%;
   }
 
-  #createName{
-    input{
-      padding-left: 10px;
-    }
+  #createInput {
+    width: 100%;
+    margin-top: 20px;
   }
 
-  #createInfo{
-    input{
-      padding-left: 10px;
-    padding-top: 10px;
-    }
-  }
+  #createName {
 
-  @media (max-width:1129px) and (min-width:1071px){
-    #buttons{
-    margin-left: 1%;
+    label {
       width: 100%;
-      display: flex;
-    }
     }
 
-@media (max-width:1071px) and (min-width:769px) {
-
-    #container {
-        width: 90%;
-        margin: 0 auto;
+    input {
+      width: 100%;
+      margin-right: 0;
     }
+  }
 
-    #createTitle {
-        width: 100%;
-        font-size: 30px;
-        font-weight: bold;
+  #createInfo {
+    width: 100%;
+    margin-top: 10%;
+
+    input {
+      padding-bottom: 25%;
     }
+  }
 
-    #createpage {
-        width: 100%;
-        display: flex;
-        flex-wrap: no-wrap;
-        justify-content: center;
-        margin-top: 36px;
-    }
-
-    #createimg {
-        width: 60%;
-    }
-
-    #create {
-        width: 80%;
-        margin-left: 3%;
-    }
-
-    #createInput {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    #createName {
-        width: 100%;
-
-        label {
-            width: 100%;
-        }
-
-        input {
-            width: 100%;
-            margin-right: 0;
-        }
-    }
-
-    #createInfo {
-        width: 100%;
-        margin-top: 10%;
-
-        input {
-            padding-bottom: 25%;
-        }
-    }
-
-    #buttons {
-        width: 100%;
-        margin-top: 20px;
-        margin-left: 1%;
-
-        #removeBtn {
-            width: 45%;
-            padding: 6px 27px 10px 27px;
-            font-size: 14px;
-        }
-
-        #addBtn {
-            width: 45%;
-            padding: 6px 24px 10px 24px;
-            font-size: 14px;
-        }
-    }
-
-    #leftBtn {
-        top: 98%;
-        z-index: 60;
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-        padding-right: 1%;
-    }
-
-    #uppDiv {
-        position: absolute;
-        left: 14%;
-        bottom: 30%;
-
-        label {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
-    #delDiv {
-        position: absolute;
-        left: 67%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40%;
-        bottom: 30%;
-    }
-
-}
-#delDiv:hover{
-    cursor: pointer;
-}
-
-
-@media (max-width:907px) and (min-width:769px) {
-
-    #leftBtn {
-        bottom: 0%;
-
-        z-index: 60;
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-        padding-right: 1%;
-    }
-
-    #uppDiv {
-        position: absolute;
-        left: 14%;
-        bottom: 30%;
-
-        label {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
-    #delDiv {
-        position: absolute;
-        left: 67%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40%;
-        bottom: 30%;
-    }
-}
-
-@media (max-width:769px) and (min-width:505px) {
-
-
-    #container {
-        width: 90%;
-        margin: 0 auto;
-
-    }
-
-    #createTitle {
-        width: 100%;
-        font-size: 28px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    #createpage {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 66px
-    }
-
-    #createimg {
-        width: 70%;
-    }
-
-    #create {
-        width: 70%;
-    }
-
-    #createInput {
-        width: 100%;
-    }
-
-    #createName {
-        margin-top: 49px;
-        width: 100%;
-
-        label {
-            width: 100%;
-        }
-
-        input {
-            width: 100%;
-            margin-right: 0;
-        }
-    }
-
-    #createInfo {
-        width: 100%;
-        margin-top: 5%;
-    }
-
-    #buttons {
-        width: 100%;
-        margin-top: 20px;
-        margin-left: 2%;
-
-        #removeBtn {
-            width: 45%;
-            padding: 6px 27px 10px 27px;
-            font-size: 20px;
-        }
-
-        #addBtn {
-            width: 45%;
-            padding: 6px 24px 10px 24px;
-            font-size: 20px;
-        }
-    }
-
-    #leftBtn {
-        top: 3%;
-        left: 0;
-        z-index: 60;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 1%;
-    }
-}
-
-@media (max-width:505px) {
-    #container {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    #createTitle {
-        width: 100%;
-        font-size: 22px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    #createpage {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 66px
-    }
-
-    #createimg {
-        width: 100%;
-        margin-top: -40px;
-    }
-
-    #create {
-        width: 100%;
-    }
-
-    #createInput {
-        width: 100%;
-    }
-
-    #createName {
-        margin-top: 38px;
-        width: 100%;
-
-        label {
-            width: 100%;
-        }
-
-        input {
-            width: 100%;
-            margin-right: 0;
-        }
-    }
-
-    #createInfo {
-        width: 100%;
-        margin-top: 10%;
-    }
+  #buttons {
+    margin-top: 30px;
 
     #removeBtn {
-        width: 45%;
-        padding: 6px 27px 10px 27px;
-        font-size: 14px;
+      font-size: 18px;
     }
 
     #addBtn {
-        width: 45%;
-        padding: 6px 24px 10px 24px;
-        font-size: 14px;
+      padding: 9px 24px 10px 24px;
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width:905px) and (min-width:769px) {
+  #container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #createTitle {
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  #createpage {
+    width: 100%;
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: center;
+    margin-top: 36px;
+  }
+
+  #createImage {
+    width: 100%;
+    height: 65%;
+    margin-top: 30px;
+    img{
+      height: 190px;
+    }
+  }
+
+  #create {
+    width: 50%;
+    margin-left: 3%;
+  }
+
+  #createInput {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #createName {
+
+    label {
+      width: 100%;
     }
 
-    #leftBtn {
-        top: 3%;
-        left: 0;
-        z-index: 60;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 1%;
+    input {
+      width: 100%;
+      margin-right: 0;
     }
+  }
+
+  #createInfo {
+    width: 100%;
+    margin-top: 10%;
+
+    input {
+      padding-bottom: 25%;
+    }
+  }
+  #buttons {
+    margin-top: 20px;
+
+    #removeBtn {
+      font-size: 18px;
+    }
+
+    #addBtn {
+      font-size: 18px;
+    }
+  }
+}
+
+
+@media (max-width:769px) and (min-width:579px) {
+  #container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #createTitle {
+    width: 100%;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #createLeftpart{
+    width: 60%;
+    height: 300px;
+  }
+
+  #createImage{
+    
+    img{
+      height: 80%;
+    }
+  }
+  #createpage {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 66px
+  }
+
+  #imageError {
+    width: 70%;
+  }
+
+  #create {
+    width: 60%;
+  }
+
+  #createName {
+    margin-top: 49px;
+    width: 100%;
+
+    label {
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  #createInfo {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  #buttons {
+    margin-top: 20px;
+
+    #removeBtn {
+      width: 47%;
+      font-size: 20px;
+    }
+
+    #addBtn {
+      width: 47%;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width:579px) and (min-width:454px) {
+  #container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #createTitle {
+    width: 100%;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+  #createLeftpart{
+    width: 70%;
+    height: 260px;
+  }
+  #createImage {
+    img{
+      height: 80%;
+    }
+  }
+
+  #createpage {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 66px
+  }
+
+  #imageError {
+    width: 70%;
+  }
+
+  #create {
+    width: 70%;
+  }
+
+  #createInput {
+    width: 100%;
+  }
+
+  #createName {
+    margin-top: 49px;
+    width: 100%;
+
+    label {
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  #createInfo {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  #buttons {
+    margin-top: 20px;
+
+    #removeBtn {
+      width: 47%;
+      font-size: 17px;
+    }
+
+    #addBtn {
+      width: 47%;
+      font-size: 17px;
+    }
+  }
+}
+
+@media (max-width:454px)  {
+  #container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #createTitle {
+    width: 100%;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+  #createLeftpart{
+    width: 84%;
+    height: 220px;
+  }
+  #createImage {
+    img{
+      height: 80%;
+    }
+  }
+
+  #createpage {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 66px
+  }
+
+  #imageError {
+    width: 70%;
+  }
+
+  #create {
+    width: 84%;
+  }
+
+  #createInput {
+    width: 100%;
+  }
+
+  #createName {
+    margin-top: 49px;
+    width: 100%;
+
+    label {
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  #createInfo {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  #buttons {
+    margin-top: 20px;
+
+    #removeBtn {
+      width: 47%;
+      font-size: 17px;
+    }
+
+    #addBtn {
+      width: 47%;
+      font-size: 17px;
+    }
+  }
 
 }
-@media (max-width:320px){
-    #createImage{
-        height: 182px;
-        img{
-            height: 134px;
-        }
-    }
-    .createpage .createimg img {
-      display: block;
-      margin: 20px auto 0px auto;
-  }
-  }

@@ -16,6 +16,7 @@ export function CreateDataProduct() {
     const [errorProduct, setErrorProduct] = useState<ICreateMember>({});
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    let emptyString="";
 
     const regCheck: { [key: string]: RegExp } = {
         fullname: new RegExp(/^[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}([-]{0,1}[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}){0,1}[\s][\u0531-\u0561]{1}[\u0561-\u0586]{2,19}([-]{0,1}[\u0531-\u0561]{1}[\u0561-\u0586]{2,19}){0,1}$/),
@@ -108,8 +109,19 @@ export function CreateDataProduct() {
             <div className="container" id="container">
                 <div className="pageTitle" id="createTitle"> Ավելացնել նոր տվյալ</div>
                 <div className="createpage" id="createpage">
+                    <div className="createLeftpart" id="createLeftpart">
                     <div className={errorProduct.img ? "createimg imageError" : "createimg"} aria-flowto={uploadedImage.dirname?"uppimg":""} id="createImage">
                         <img id={uploadedImage.dirname ? "createdImg" : ""} src={uploadedImage.dirname ? uploadedImage.dirname : " ../../../../government/backgroundimage.png"} />
+                        
+                    </div>
+                    <div className={errorProduct.img ? "leftbtn imageErrorMessage" : "leftbtn"} id={"leftBtn"}>
+                            <label htmlFor="file">
+                                <img src={errorProduct.img ? "/government/down.svg" : "/government/vectordown1.png"} className={errorProduct.img ? "imageErrorIcon" : ""} />
+                                Ներբեռնել նկար
+                            </label>
+                            <input type="file" accept="image/*" name="file" id="file" value={""} onChange={uploadImageHandler}
+                                style={{ "display": "none" }} />
+                        </div>
                     </div>
                     <form className="create" id="create" autoComplete="off">
                         <div className="createInput" id="createInput">
@@ -128,8 +140,9 @@ export function CreateDataProduct() {
                                 <label id={errorProduct.position ? "errorMessageForTitle" : "hideErrorMessage"}>{errorProduct["position"]}</label>
                             </div>
                         </div>
+
                         <div className="buttons" id="buttons" >
-                            <div className="rightbtns" id="buttons" >
+                            
                                 <button type="submit" className="removeBtn" id="removeBtn" onClick={(e) => {
                                     e.preventDefault();
                                     if (Object.values(createProduct).length) {
@@ -148,16 +161,10 @@ export function CreateDataProduct() {
 
                                 }}>Չեղարկել</button>
                                 <button type="submit" className="addBtn" id="addBtn" onClick={addConfirme}>Հաստատել </button>
-                            </div>
+                            
+
                         </div>
-                        <div className={errorProduct.img ? "leftbtn imageErrorMessage" : "leftbtn"} id={"leftBtn"}>
-                            <label htmlFor="file">
-                                <img src={errorProduct.img ? "/government/down.svg" : "/government/vectordown1.png"} className={errorProduct.img ? "imageErrorIcon" : ""} />
-                                Ներբեռնել նկար
-                            </label>
-                            <input type="file" accept="image/*" name="file" id="file" value={createProduct.picture?createProduct.picture:""} onChange={uploadImageHandler}
-                                style={{ "display": "none" }} />
-                        </div>
+                       
                     </form>
                 </div>
             </div>
