@@ -5,6 +5,7 @@ import { editeAProduct, uploadImage } from "../../store/actions/governmentAddRem
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { uniqueProductAction } from "../../store/actions/uniqueProductAction";
+import {MenuOfImages} from "../../components/menuofImages";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { deleteUploadImage } from "../../store/slices/GovernmetMembersFullInfo";
 import { fetchGovernmentMemberFullInfo } from "../../store/actions/governmentMembersFullInfoAction";

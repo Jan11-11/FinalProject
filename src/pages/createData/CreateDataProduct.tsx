@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { addProduct, uploadImage } from "../../store/actions/governmentAddRemoveMembers";
 import {deleteUploadImage} from "../../store/slices/GovernmetMembersFullInfo";
+import {MenuOfImages} from "../../components/menuofImages";
 interface ICreateMember {
     [key: string]: string
 }
