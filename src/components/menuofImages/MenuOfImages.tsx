@@ -1,14 +1,14 @@
-import React from 'react'
 import { useAppDispatch,useAppSelector } from '../../hooks';
+import "./menuOfImages.scss"
+export function MenuOfImages() {
 
-function MenuOfImages() {
     const dispatch=useAppDispatch();
     const uploadedImage=useAppSelector((state)=>state.membersFullInfo.uploadedImage);
+
+
   return (
-    <div>
+    <div className='MenuOfImages'>
         <h1>Նախնտրելի նկար</h1>
     </div>
   )
 }
-
-export default MenuOfImages

@@ -92,7 +92,7 @@ export const Login = () => {
                     <LoginHeader />
                     <div className="containerMain">
                         <div className="loginImage">
-                            <img src="../../../..//government/republicsquere.png" />
+                            <img src="../../../..//government/i.webp" />
                         </div>
                         <form className="loginForm">
                             <h3 className="loginFormTitle">Մուտք գործել</h3>

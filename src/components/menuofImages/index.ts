@@ -1,2 +1,2 @@
-import MenuOfImages from "./MenuOfImages";
+import {MenuOfImages} from "./MenuOfImages";
 export {MenuOfImages};

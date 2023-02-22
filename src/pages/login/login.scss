@@ -37,6 +37,7 @@ $normal: "normal";
 
 @mixin loginImage {
   width: 55.5%;
+  object-fit: cover;
 }
 
 @mixin loginForm {
@@ -190,7 +191,7 @@ $normal: "normal";
   .loginFormCheckboxChild {
     @include loginFormCheckboxChild;
 
-    
+
   }
 
   label {
@@ -216,19 +217,22 @@ $normal: "normal";
   width: 100%;
   display: flex;
   align-items: center;
-  input[type="checkbox"]{
+
+  input[type="checkbox"] {
     margin-right: 7px;
-   width: 15px;
-   height: 15px;
+    width: 15px;
+    height: 15px;
   }
-    
-  
+
+
 }
-.remcheck{
-  input[type="checkbox"]:hover{
+
+.remcheck {
+  input[type="checkbox"]:hover {
     cursor: pointer;
   }
-  label:hover{
+
+  label:hover {
     cursor: pointer;
   }
 }
@@ -302,7 +306,7 @@ $normal: "normal";
 @media (max-width:768px) and (min-width:393px) {
   .container {
     padding: 0px;
-   }
+  }
 
   .loginImage {
     width: 100%;
@@ -380,13 +384,14 @@ $normal: "normal";
 }
 
 @media (max-width:770px) and (min-width:320px) {
-  #container{
+  #container {
     width: 100% !important;
   }
-  .loginImage{
-    img{
+
+  .loginImage {
+    img {
       width: 100% !important;
     }
   }
-  
+
 }

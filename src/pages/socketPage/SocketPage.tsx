@@ -6,10 +6,10 @@ import { fetchGovernmentMembersInfo } from "../../store/actions/governmentMember
 import io from "socket.io-client"
 import { useNavigate, useLocation } from "react-router-dom";
 import auth from "../../auth";
-   
- 
- 
- 
+
+
+
+
 
 export function SocketPage() {
     const [socket, setSocket] = useState<any>(null)
@@ -35,11 +35,19 @@ export function SocketPage() {
             if (ws && ws != null) {
                 navigate("/detail", { state: { user } })
             }
-            
+
         }})
-        
-        
-    
+
+
+        ws.on("REFRESH", (str) => {
+            
+            if (ws && str.key==="refresh") {
+                navigate("/initialPage",)
+            }
+
+        })
+
+
         dispatch(fetchGovernmentMembersInfo())
     }, [dispatch]);
     return (
@@ -49,7 +57,7 @@ export function SocketPage() {
                     <div>
                         <div className={"headerGerbPart"}>
                             <img src={"../../../../government/logo3.svg"} />
-                            <h5 id={"headerContainerH5"} className={"headerContainerH5"}>Հայաստանի Հանրապետության Կառավարություն</h5>
+                            <h5 id={"headerContainerH5"} className={"headerContainerH5"}>Հայաստանի Հանրապետության ԱԺ</h5>
                         </div>
                     </div>
                     <div className={"headerVectorPartParent"}>
@@ -70,7 +78,7 @@ export function SocketPage() {
 
             <div className='socket' id="socket">
                 <div className='logo' id='logo'>< img src={"../../../government/logo3.svg"} /></div>
-                <div className='txt' id='txt'>Հայաստանի Հանրապետության<br /> Կառավարություն</div>
+                <div className='txt' id='txt'>Հայաստանի Հանրապետության<br /> Ազգային Ժողով</div>
             </div>
         </div>
     );

@@ -12,7 +12,7 @@ export const Header = () => {
                 <div>
                     <div className={"headerGerbPart"}>
                         <img src={"../../../../government/gerb.png"} />
-                        <h5 id={"headerContainerH5"} className={"headerContainerH5"}>Հայաստանի Հանրապետության Կառավարություն</h5>
+                        <h5 id={"headerContainerH5"} className={"headerContainerH5"}>Հայաստանի Հանրապետության ԱԺ</h5>
                     </div>
                 </div>
                 <div className={"headerVectorPartParent"}>

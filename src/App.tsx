@@ -6,6 +6,7 @@ import { EditDataProduct } from "./pages/editData";
 import { DatailPage } from './pages/detail';
 import { CreateDataProduct } from './pages/createData';
 import { SocketPage } from "./pages/socketPage";
+import { MenuOfImages } from "./components/menuofImages";
 function App() {
     return (
         <div className={"app"}>
@@ -17,6 +18,7 @@ function App() {
                 <Route path='/detail' element={<DatailPage />} />
                 <Route path="/createProduct" element={<CreateDataProduct />} />
                 <Route path="/initialPage" element={<SocketPage />} />
+                <Route path="/aaa" element={<MenuOfImages/>}/>
             </Routes>
         </div>
 
