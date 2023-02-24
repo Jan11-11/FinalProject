@@ -18,7 +18,7 @@ export const Home = () => {
     const { membersFullInfo, loading } = useAppSelector( ( state ) => state.membersFullInfo );
     const dispatch = useAppDispatch();
     const URL = process.env.REACT_APP_BASE_URL1;
-
+    
     useEffect( () => {
         const loc: string | any = localStorage.getItem( "auth" );
         const local = JSON.parse( loc );
@@ -35,17 +35,16 @@ export const Home = () => {
         
             
             ws.on("REFRESH",(str:any)=>{
-                
-                
-                if (ws && str.key==="refresh") {
+                if (socket && str.key==="refresh") {
                     setSocketColor(0);
                 }
+                
             })
             setSocket( ws );
         }
         dispatch( fetchGovernmentMembersInfo() )
 
-    }, [dispatch] );
+    }, [dispatch,socketColor] );
 
 
     return (
