@@ -32,8 +32,12 @@ export const Home = () => {
                     //auth_token
                 }
             } );
+        
+            
             ws.on("REFRESH",(str:any)=>{
-                if (socket && str.key==="refresh") {
+                
+                
+                if (ws && str.key==="refresh") {
                     setSocketColor(0);
                 }
             })
