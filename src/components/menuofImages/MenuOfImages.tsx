@@ -1,9 +1,6 @@
-import { useAppDispatch,useAppSelector } from '../../hooks';
 import "./menuOfImages.scss"
 export function MenuOfImages() {
 
-    const dispatch=useAppDispatch();
-    const uploadedImage=useAppSelector((state)=>state.membersFullInfo.uploadedImage);
 
 
   return (

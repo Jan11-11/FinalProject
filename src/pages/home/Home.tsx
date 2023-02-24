@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { fetchGovernmentMembersInfo } from "../../store/actions/governmentMembersFullInfoAction";
 import { IMemberInfo } from "../../types/models";
@@ -18,14 +18,18 @@ export const Home = () => {
     const { membersFullInfo, loading } = useAppSelector( ( state ) => state.membersFullInfo );
     const dispatch = useAppDispatch();
     const URL = process.env.REACT_APP_BASE_URL1;
+    const socketRef: null | any =useRef(null );
     
+
     useEffect( () => {
+        socketRef.current=undefined;
         const loc: string | any = localStorage.getItem( "auth" );
         const local = JSON.parse( loc );
         if ( local == null || local?.role != "primeminister" ) {
             navigate( "/" );
         };
         if ( local?.role == "primeminister" ) {
+        
             const ws = io( `${ URL }`, {
                 extraHeaders: {
                     Authorization: auth().accessToken,
@@ -35,16 +39,15 @@ export const Home = () => {
         
             
             ws.on("REFRESH",(str:any)=>{
-                if (socket && str.key==="refresh") {
-                    setSocketColor(0);
-                }
-                
+                setSocketColor(0);
+                socketRef.current=0;
             })
             setSocket( ws );
+            
         }
         dispatch( fetchGovernmentMembersInfo() )
 
-    }, [dispatch,socketColor] );
+    }, [dispatch,socketRef.current] );
 
 
     return (
