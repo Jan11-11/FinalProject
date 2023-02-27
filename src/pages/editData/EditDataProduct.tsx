@@ -56,13 +56,10 @@ export function EditDataProduct() {
 
   useEffect( () => {
     if ( product.length > 0 ) {
-      if(editeProduct.fullname==""){
-        editeProduct.fullname = product[0].fullname;
-      }
-      if(editeProduct.position==""){
-        editeProduct.position = product[0].position;
-      }
-      
+
+      editeProduct.fullname = product[0].fullname;      
+      editeProduct.position = product[0].position;
+  
       if ( product[0].picture != editeProduct.picture ) {
         editeProduct.picture = product[0].picture;
       }
@@ -143,6 +140,7 @@ export function EditDataProduct() {
 
     if ( !( Object.keys( editeErrorProduct ).length ) && check === 4 ) {
       dispatch( editeAProduct( editeProduct ) );
+      setEditeProduct({...editeProduct})
       dispatch( deleteUploadImage() );
       navigate( "/homeFullInfo", { state: { id: editeProduct.id } } );
       dispatch( fetchGovernmentMemberFullInfo() );
@@ -154,6 +152,13 @@ export function EditDataProduct() {
     <div className='createData' >
       <Header />
       <div className="container" id="container">
+        <div className="undoclick" id="undoclick" onClick={(e)=>{
+        e.preventDefault()
+        dispatch( deleteUploadImage() );        
+        navigate(-1)
+        }
+
+        }>Վերադառնալ</div>
         <div className="pageTitle" id="createTitle" > Տվյալների խմբագրում </div>
           < div className="createpage" id="createpage" >
             <div className="createLeftpart" id="createLeftpart" >
@@ -188,46 +193,46 @@ export function EditDataProduct() {
                       <div className="createInput" id="createInput" >
                         <div className="createName" id="createName" >
                           <label className={editeErrorProduct.fullname ? "labelError" : ""}> Անուն Ազգանուն </label>
-                            < input id={editeErrorProduct.fullname ? "inputError" : ""} name={"fullname"} type="text" value={editeProduct.fullname != null ? editeProduct.fullname : ""} onBlur={blurFullName} onChange={( event ) => {
-                              event.preventDefault();
-                              setEditeProduct( { ...editeProduct, [event.target.name]: event.target.value } )
-                            }
-                            } placeholder='Անուն Ազգանուն'/>
-                            <p className="errorMessageForName" id="errorMessageForName" > {editeErrorProduct.fullname} </p>
-                              </div>
-                              < div className="createInfo" id="createInfo" >
-                                <label className={editeErrorProduct.position ? "labelError" : ""}> Պաշտոն </label>
-                                  < input id={editeErrorProduct.position ? "titleErrorMessage" : ""} type="text" name={"position"} value={editeProduct.position != null ? editeProduct.position : ""} onBlur={blurTitle} onChange={( event ) => {
-                                    event.preventDefault();
-                                    setEditeProduct( { ...editeProduct, [event.target.name]: event.target.value } )
-                                  }
-                                  } placeholder='Օր․՝ ՀՀ վարչապետ' />
-                                  <p className="errorMessageForTitle" id={editeErrorProduct.position ? "errorMessageForTitle" : "hideErrorMessage"} > {editeErrorProduct.position} </p>
-                                    </div>
-                                    </div>
-                                    < div className="buttons" id="buttons" >
-                                      <button className="removeBtn" id="removeBtn"
-                                        onClick={( e ) => {
-                                          e.preventDefault();
-                                          if ( Object.values( editeProduct ).length ) {
-                                            for ( let key in editeProduct ) {
-                                              delete editeProduct[key];
-                                            }
+                 < input id={editeErrorProduct.fullname ? "inputError" : ""} name={"fullname"} type="text" value={editeProduct.fullname != null ? editeProduct.fullname : ""} onBlur={blurFullName} onChange={( event ) => {
+                   event.preventDefault();
+                   setEditeProduct( { ...editeProduct, [event.target.name]: event.target.value } )
+                 }
+                 } placeholder='Անուն Ազգանուն'/>
+                 <p className="errorMessageForName" id="errorMessageForName" > {editeErrorProduct.fullname} </p>
+                   </div>
+                   < div className="createInfo" id="createInfo" >
+                     <label className={editeErrorProduct.position ? "labelError" : ""}> Պաշտոն </label>
+                       < input id={editeErrorProduct.position ? "titleErrorMessage" : ""} type="text" name={"position"} value={editeProduct.position != null ? editeProduct.position : ""} onBlur={blurTitle} onChange={( event ) => {
+                         event.preventDefault();
+                         setEditeProduct( { ...editeProduct, [event.target.name]: event.target.value } )
+                       }
+                       } placeholder='Օր․՝ ՀՀ վարչապետ' />
+                       <p className="errorMessageForTitle" id={editeErrorProduct.position ? "errorMessageForTitle" : "hideErrorMessage"} > {editeErrorProduct.position} </p>
+                         </div>
+                       </div>
+                       < div className="buttons" id="buttons" >
+                         <button className="removeBtn" id="removeBtn"
+                           onClick={( e ) => {
+                             e.preventDefault();
+                             if ( Object.values( editeProduct ).length ) {
+                               for ( let key in editeProduct ) {
+                                 delete editeProduct[key];
+                               }
 
-                                          }
-                                          editeProduct.picture = product[0].picture;
-                                          editeProduct.fullname = product[0].fullname;
-                                          editeProduct.position = product[0].position;
-                                          setEditeProduct( { ...editeProduct } );
-                                          if ( Object.values( editeErrorProduct ).length ) {
-                                            for ( let key in editeErrorProduct ) {
-                                              delete editeErrorProduct[key];
-                                            }
-                                            setEditeErrorProduct( { ...editeErrorProduct } );
-                                          }
-                                        }}
-                                      > Չեղարկել </button>
-                                        < button className="addBtn" id="addBtn" onClick={addConfirme} > Հաստատել </button>
+                             }
+                             editeProduct.picture = product[0].picture;
+                             editeProduct.fullname = product[0].fullname;
+                             editeProduct.position = product[0].position;
+                             setEditeProduct( { ...editeProduct } );
+                             if ( Object.values( editeErrorProduct ).length ) {
+                               for ( let key in editeErrorProduct ) {
+                                 delete editeErrorProduct[key];
+                               }
+                               setEditeErrorProduct( { ...editeErrorProduct } );
+                             }
+                           }}
+                         > Չեղարկել </button>
+                           < button className="addBtn" id="addBtn" onClick={addConfirme} > Հաստատել </button>
 
                     </div>
 

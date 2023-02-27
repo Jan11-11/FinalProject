@@ -108,6 +108,13 @@ export function CreateDataProduct() {
         <div className='createData'>
             <Header />
             <div className="container" id="container">
+            <div className="undoclick" id="undoclick" onClick={(e)=>{
+           e.preventDefault()
+          dispatch( deleteUploadImage() );        
+          navigate(-1)
+        }
+
+        }>Վերադառնալ</div>
                 <div className="pageTitle" id="createTitle"> Ավելացնել նոր տվյալ</div>
                 <div className="createpage" id="createpage">
                     <div className="createLeftpart" id="createLeftpart">
