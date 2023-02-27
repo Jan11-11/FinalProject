@@ -18,6 +18,7 @@ export function EditDataProduct() {
   const [editeProduct, setEditeProduct] = useState<MyEdite>( {
     fullname: "",
     position: "",
+    picture: ""
   } );
   const [editeErrorProduct, setEditeErrorProduct] = useState<MyEdite>( {} );
   const navigate = useNavigate();
@@ -55,8 +56,13 @@ export function EditDataProduct() {
 
   useEffect( () => {
     if ( product.length > 0 ) {
-      editeProduct.fullname = product[0].fullname;
-      editeProduct.position = product[0].position;
+      if(editeProduct.fullname==""){
+        editeProduct.fullname = product[0].fullname;
+      }
+      if(editeProduct.position==""){
+        editeProduct.position = product[0].position;
+      }
+      
       if ( product[0].picture != editeProduct.picture ) {
         editeProduct.picture = product[0].picture;
       }
@@ -161,8 +167,8 @@ export function EditDataProduct() {
                     <img src={editeErrorProduct.picture ? "/government/down.svg" : "/government/vectordown1.png"} alt='img' />
                     Ներբեռնել նկար
                     </label>
-                    < input type="file" accept="image/*" name="file" id="file" style={{ "display": "none" }
-                    } value={""} onChange={( e ) => uploadImageHandler( e )} />
+                    < input type="file" accept="image/*" name="file" id="file" style={{ "display": "none" } }
+                     value={""} onChange={( e ) => uploadImageHandler( e )} />
                 </div>
 
                 {
@@ -223,11 +229,11 @@ export function EditDataProduct() {
                                       > Չեղարկել </button>
                                         < button className="addBtn" id="addBtn" onClick={addConfirme} > Հաստատել </button>
 
-                                          </div>
+                    </div>
 
-                                          </form>
-                                          </div>
-                                          </div>
-                                          </div>
-                                          );
+                  </form>
+                  </div>
+               </div>
+            </div>
+        );
 }
